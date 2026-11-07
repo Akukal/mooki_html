@@ -12,6 +12,24 @@
     body {
       font-family: 'Fredoka', cursive, sans-serif;
     }
+
+    .style-title {
+      color: #22afe2;
+      text-shadow: 1px 2px 0 #fff, 2px 4px 0 rgba(0, 95, 160, 0.18);
+    }
+
+    .hero-outline {
+      -webkit-text-stroke: 1.5px #111;
+      paint-order: stroke fill;
+      text-shadow: 1px 2px 0 #111;
+    }
+
+    .site-container {
+      width: 100%;
+      max-width: 64rem;
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800 antialiased selection:bg-sky-500 selection:text-white">
@@ -131,172 +149,125 @@
   </div>
 
   <!-- SECTION: HEY I'M MOOKI -->
-  <section class="py-16 md:py-24 px-6 max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
-      <!-- Left Content -->
-      <div class="space-y-6 max-w-xl">
-        <h1 class="text-5xl md:text-6xl font-black text-[#1FA2FF] leading-tight">
-          Hey, I'm<br/>Mooki
+  <section class="py-7 sm:py-12">
+    <div class="site-container grid grid-cols-[0.95fr_1.05fr] items-center gap-2 sm:gap-8">
+      <div class="min-w-0 space-y-3 sm:space-y-4">
+        <h1 class="hero-outline text-[2rem] font-black leading-[0.92] text-white sm:text-5xl lg:text-7xl">
+          Hey, I'm<br/><span class="text-[#25b5e8]">Mooki</span>
         </h1>
-        <div class="space-y-2">
-          <h3 class="font-bold text-gray-800 text-lg">Your daily Sidekick.</h3>
-          <p class="text-gray-600 text-base">
-            Wherever you go, I'm right there with you.
-          </p>
+        <div class="space-y-1 text-[10px] sm:text-sm">
+          <h2 class="font-semibold text-gray-900">Your daily Sidekick.</h2>
+          <p class="leading-snug text-gray-700">Wherever you go, I'm right there with you.</p>
         </div>
 
-        <!-- Badges -->
-        <div class="flex flex-wrap gap-3 pt-2">
-          <div class="flex items-center gap-2 border border-gray-300 rounded-lg px-4 py-2 bg-white shadow-sm text-xs font-semibold">
-            <span>⚡</span>
-            <span>Full Of Energy</span>
+        <div class="flex gap-1 sm:gap-2">
+          <div class="flex min-h-[38px] w-[62px] items-center justify-center gap-1 rounded-md border border-gray-500 px-1 text-[8px] font-semibold leading-tight text-gray-900 sm:w-[76px] sm:text-[9px]">
+            <span class="text-sm" aria-hidden="true">⚡</span><span>Full Of<br/>Energy</span>
           </div>
-          <div class="flex items-center gap-2 border border-gray-300 rounded-lg px-4 py-2 bg-white shadow-sm text-xs font-semibold">
-            <span>😎</span>
-            <span>Full Of Energy</span>
+          <div class="flex min-h-[38px] w-[62px] items-center justify-center gap-1 rounded-md border border-gray-500 px-1 text-[8px] font-semibold leading-tight text-gray-900 sm:w-[76px] sm:text-[9px]">
+            <span class="text-sm" aria-hidden="true">😎</span><span>Full Of<br/>Energy</span>
           </div>
-          <div class="flex items-center gap-2 border border-gray-300 rounded-lg px-4 py-2 bg-white shadow-sm text-xs font-semibold">
-            <span>👟</span>
-            <span>Full Of Energy</span>
+          <div class="flex min-h-[38px] w-[62px] items-center justify-center gap-1 rounded-md border border-gray-500 px-1 text-[8px] font-semibold leading-tight text-gray-900 sm:w-[76px] sm:text-[9px]">
+            <span class="text-sm" aria-hidden="true">👟</span><span>Full Of<br/>Energy</span>
           </div>
         </div>
 
-        <div>
-          <a href="products.html" class="inline-block bg-[#0075FF] hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-full shadow-md transition">
-            See My Flavor
-          </a>
-        </div>
+        <a href="products.html" class="inline-block rounded-full bg-[#0875e1] px-3 py-1.5 text-[11px] font-bold text-white shadow-sm transition hover:bg-blue-700 sm:px-5 sm:py-2 sm:text-sm">
+          See My Flavor
+        </a>
       </div>
 
-      <!-- Right Image / Mascot Container -->
-      <div class="w-72 h-72 md:w-96 md:h-96 rounded-full bg-sky-100 flex items-center justify-center relative overflow-hidden shrink-0 shadow-inner">
-        <span class="text-9xl">🐮</span>
+      <div class="flex min-w-0 items-center justify-center">
+        <img src="assets/mooki-about.png" alt="Mooki holding a Choco Blast drink" class="h-[210px] w-full object-contain sm:h-[290px] lg:h-[360px]">
       </div>
     </div>
   </section>
 
   <!-- SECTION: MOOKI'S STYLE -->
-  <section class="bg-[#FFFDF3] py-20 px-6">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-      
-      <!-- Mascot Interactive Diagram Callouts -->
-      <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-[#1FA2FF] flex items-center justify-center shrink-0">
-        <span class="text-9xl">🐮</span>
+  <section class="overflow-hidden bg-[#fff9f0] py-12 md:py-16">
+    <div class="site-container flex flex-col items-center justify-center gap-8 md:flex-row md:gap-12">
+      <div class="relative w-full max-w-[440px] h-[310px] sm:h-[340px] shrink-0" aria-label="Mooki's outfit">
+        <div class="absolute left-1/2 top-1/2 w-48 h-48 sm:w-52 sm:h-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#25b5e8]"></div>
+        <img src="assets/Mooki.png" alt="Mooki wearing an orange beanie, blue hoodie and sneakers" class="absolute left-1/2 top-1/2 z-10 h-[250px] sm:h-[280px] w-auto -translate-x-1/2 -translate-y-[45%] object-contain">
 
-        <!-- Callout 1: Beanie -->
-        <div class="absolute -top-4 -left-12 md:-left-16 bg-[#0075FF] text-white p-3 rounded-xl shadow-lg flex items-center gap-3 text-left w-48 border border-white/20">
-          <span class="text-2xl">🧢</span>
-          <div>
-            <div class="text-xs font-bold">Orange Beanie</div>
-            <div class="text-[10px] opacity-80">Always Warm Up</div>
-          </div>
+        <svg class="absolute inset-0 z-20 h-full w-full pointer-events-none" viewBox="0 0 440 340" fill="none" aria-hidden="true">
+          <defs>
+            <marker id="style-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M1 1L6 4L1 7" stroke="#111827" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </marker>
+          </defs>
+          <path d="M108 38C150 37 151 56 165 82" stroke="#111827" stroke-width="2" marker-end="url(#style-arrow)" />
+          <path d="M292 94C286 128 277 151 252 174" stroke="#111827" stroke-width="2" marker-end="url(#style-arrow)" />
+          <path d="M293 278C270 265 250 251 227 239" stroke="#111827" stroke-width="2" marker-end="url(#style-arrow)" />
+        </svg>
+
+        <div class="absolute left-0 top-2 z-30 flex w-36 items-center gap-2 rounded-xl border-2 border-gray-900 bg-[#0875e1] px-2 py-2 text-white shadow-sm sm:w-40">
+          <span class="text-lg" aria-hidden="true">🧢</span>
+          <div class="leading-tight"><div class="text-[10px] font-bold">Orange Beanie</div><div class="text-[8px]">Always Warm Up</div></div>
         </div>
-
-        <!-- Callout 2: Hoodie -->
-        <div class="absolute top-1/4 -right-12 md:-right-20 bg-[#0075FF] text-white p-3 rounded-xl shadow-lg flex items-center gap-3 text-left w-48 border border-white/20">
-          <span class="text-2xl">🧥</span>
-          <div>
-            <div class="text-xs font-bold">Blue Hoodie</div>
-            <div class="text-[10px] opacity-80">Ready for anything</div>
-          </div>
+        <div class="absolute right-0 top-12 z-30 flex w-36 items-center gap-2 rounded-xl border-2 border-gray-900 bg-[#0875e1] px-2 py-2 text-white shadow-sm sm:w-40">
+          <span class="text-lg" aria-hidden="true">🧥</span>
+          <div class="leading-tight"><div class="text-[10px] font-bold">Blue Hoodie</div><div class="text-[8px]">Ready for anything</div></div>
         </div>
-
-        <!-- Callout 3: Kicks -->
-        <div class="absolute -bottom-4 right-0 bg-[#0075FF] text-white p-3 rounded-xl shadow-lg flex items-center gap-3 text-left w-48 border border-white/20">
-          <span class="text-2xl">👟</span>
-          <div>
-            <div class="text-xs font-bold">Fresh Kick</div>
-            <div class="text-[10px] opacity-80">Born To Move</div>
-          </div>
+        <div class="absolute bottom-1 right-0 z-30 flex w-36 items-center gap-2 rounded-xl border-2 border-gray-900 bg-[#0875e1] px-2 py-2 text-white shadow-sm sm:w-40">
+          <span class="text-lg" aria-hidden="true">👟</span>
+          <div class="leading-tight"><div class="text-[10px] font-bold">Fresh Kick</div><div class="text-[8px]">Born To Move</div></div>
         </div>
       </div>
 
-      <!-- Right Text Content -->
-      <div class="space-y-4 max-w-md text-center md:text-left">
-        <h2 class="text-4xl md:text-5xl font-black text-[#1FA2FF] leading-tight">
-          Mooki's<br/>Style
-        </h2>
-        <p class="text-gray-600 font-semibold text-lg">
-          Cool from head to hoof
-        </p>
+      <div class="space-y-2 text-center md:text-left">
+        <h2 class="style-title text-4xl font-black leading-tight sm:text-5xl md:text-6xl">Mooki's<br/>Style</h2>
+        <p class="text-sm font-medium text-gray-900">Cool from head to hoof</p>
       </div>
-
     </div>
   </section>
 
   <!-- SECTION: WHAT MOOKI STAND FOR -->
-  <section class="bg-[#1FA2FF] py-20 px-6 text-white relative">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-black leading-tight">
+  <section class="relative overflow-hidden bg-[#2aadd7] py-6 text-white">
+    <div class="site-container relative z-10">
+      <div class="relative mb-2 min-h-[72px]">
+        <h2 class="w-fit pt-1 text-2xl font-black leading-tight drop-shadow-[1px_2px_0_rgba(0,86,142,0.55)] sm:text-3xl">
           What Mooki<br/>Stand For
         </h2>
-        <div class="w-24 h-24 text-7xl hidden md:block">🐮</div>
+        <img src="assets/Mooki.png" alt="Mooki waving" class="absolute right-0 top-[-8px] h-[92px] w-auto object-contain">
       </div>
 
-      <!-- 4 Pillars Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-gray-800">
-        <!-- Card 1 -->
-        <div class="bg-white rounded-2xl p-6 text-center shadow-md flex flex-col items-center justify-center">
-          <span class="text-4xl mb-3">👟</span>
-          <h4 class="font-bold text-base mb-1">Stay Active</h4>
-          <p class="text-xs text-gray-500">Move more, Smile more</p>
+      <div class="grid grid-cols-2 gap-2 text-center text-gray-900 min-[520px]:grid-cols-4 sm:gap-2.5">
+        <div class="flex min-h-[80px] flex-col items-center justify-center rounded-xl bg-[#fffaf3] px-2 py-2">
+          <span class="mb-1 text-xl leading-none" aria-hidden="true">👟</span>
+          <h3 class="text-[10px] font-bold leading-tight">Stay Active</h3>
+          <p class="mt-0.5 text-[8px] leading-tight text-gray-700">Move more, Smile more</p>
         </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white rounded-2xl p-6 text-center shadow-md flex flex-col items-center justify-center">
-          <span class="text-4xl mb-3">😎</span>
-          <h4 class="font-bold text-base mb-1">Stay Cool</h4>
-          <p class="text-xs text-gray-500">Be yourself, always</p>
+        <div class="flex min-h-[80px] flex-col items-center justify-center rounded-xl bg-[#fffaf3] px-2 py-2">
+          <span class="mb-1 text-xl leading-none" aria-hidden="true">😎</span>
+          <h3 class="text-[10px] font-bold leading-tight">Stay Cool</h3>
+          <p class="mt-0.5 text-[8px] leading-tight text-gray-700">Be yourself, always</p>
         </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white rounded-2xl p-6 text-center shadow-md flex flex-col items-center justify-center">
-          <span class="text-4xl mb-3">😄</span>
-          <h4 class="font-bold text-base mb-1">Stay Positive</h4>
-          <p class="text-xs text-gray-500">Good vibe, every day</p>
+        <div class="flex min-h-[80px] flex-col items-center justify-center rounded-xl bg-[#fffaf3] px-2 py-2">
+          <span class="mb-1 text-xl leading-none" aria-hidden="true">😃</span>
+          <h3 class="text-[10px] font-bold leading-tight">Stay Positive</h3>
+          <p class="mt-0.5 text-[8px] leading-tight text-gray-700">Good vibe, every day</p>
         </div>
-
-        <!-- Card 4 -->
-        <div class="bg-white rounded-2xl p-6 text-center shadow-md flex flex-col items-center justify-center">
-          <span class="text-4xl mb-3">🥛</span>
-          <h4 class="font-bold text-base mb-1">Stay Yummy</h4>
-          <p class="text-xs text-gray-500">Flavor you'll love</p>
+        <div class="flex min-h-[80px] flex-col items-center justify-center rounded-xl bg-[#fffaf3] px-2 py-2">
+          <span class="mb-1 text-xl leading-none" aria-hidden="true">🥛</span>
+          <h3 class="text-[10px] font-bold leading-tight">Stay Yummy</h3>
+          <p class="mt-0.5 text-[8px] leading-tight text-gray-700">Flavor you'll love</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- BANNER CTA: MOOVE YOUR DAY WITH MOOKI -->
-  <section
-    class="relative w-full bg-cover bg-center overflow-hidden flex items-center min-h-[420px] md:min-h-[520px] lg:min-h-[553px]"
-    style="background-image: url('assets/cta-bg.png');"
-  >
-    <div class="w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 flex justify-center md:justify-end">
-      <div class="w-full md:w-7/12 lg:w-1/2 flex flex-col items-center text-center py-12 md:py-0">
-        <h2
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] mb-8 select-none"
-          style="filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));"
-        >
-          <span
-            class="block text-white"
-            style="-webkit-text-stroke: 3.5px #000; paint-order: stroke fill;"
-          >
-            Moove Your Day
-          </span>
-          <span
-            class="block text-[#38BDF8]"
-            style="-webkit-text-stroke: 3.5px #000; paint-order: stroke fill;"
-          >
-            With Mooki!
-          </span>
-        </h2>
-        <a
-          href="#buy"
-          class="inline-block bg-[#0075FF] hover:bg-[#005cd6] text-white font-bold text-xl md:text-2xl px-12 py-3.5 rounded-full border-2 border-black shadow-[0_6px_16px_rgba(0,0,0,0.3)] transition transform hover:scale-105 active:scale-95"
-        >
-          Buy Now
-        </a>
+  <section class="relative isolate flex aspect-[2.5/1] min-h-[210px] w-full items-center overflow-hidden bg-[#28aef0] bg-cover bg-center" style="background-image: url('assets/cta-bg.png');">
+    <div class="site-container grid grid-cols-2 items-center">
+      <div aria-hidden="true"></div>
+      <div class="relative z-10 text-center">
+      <h2 class="mb-3 text-xl font-black leading-[0.95] text-white [text-shadow:2px_2px_0_#111,-2px_-2px_0_#111,2px_-2px_0_#111,-2px_2px_0_#111,3px_4px_0_#111] sm:mb-5 sm:text-3xl md:text-5xl">
+        Moove Your Day<br/><span class="text-[#8ce7ff]">With Mooki!</span>
+      </h2>
+      <a href="#buy" class="inline-block rounded-full border-2 border-gray-900 bg-[#0875e1] px-6 py-1.5 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 sm:px-8 sm:py-2 sm:text-lg">
+        Buy Now
+      </a>
       </div>
     </div>
   </section>
@@ -377,7 +348,6 @@
           </ul>
         </div>
       </div>
-
     </div>
   </footer>
 

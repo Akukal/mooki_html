@@ -23,6 +23,13 @@
       paint-order: stroke fill;
       text-shadow: 1px 2px 0 #111;
     }
+
+    .site-container {
+      width: 100%;
+      max-width: 64rem;
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -32,7 +39,7 @@
     <div class="absolute inset-0 bg-black/20"></div>
 
     <!-- Header / Navbar -->
-    <header class="relative z-10 max-w-7xl mx-auto px-6 py-6 flex justify-between items-center text-white">
+    <header class="site-container relative z-10 flex items-center justify-between py-6 text-white">
       <div class="flex items-center gap-2">
         <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center font-bold text-xl border-2 border-white">
           🐮
@@ -50,8 +57,8 @@
   </div>
 
   <!-- SECTION: HEY I'M MOOKI -->
-  <section class="px-5 py-7 sm:px-8 sm:py-12">
-    <div class="mx-auto grid max-w-5xl grid-cols-[0.95fr_1.05fr] items-center gap-2 sm:gap-8">
+  <section class="py-7 sm:py-12">
+    <div class="site-container grid grid-cols-[0.95fr_1.05fr] items-center gap-2 sm:gap-8">
       <div class="min-w-0 space-y-3 sm:space-y-4">
         <h1 class="hero-outline text-[2rem] font-black leading-[0.92] text-white sm:text-5xl lg:text-7xl">
           Hey, I'm<br/><span class="text-[#25b5e8]">Mooki</span>
@@ -85,8 +92,8 @@
   </section>
 
   <!-- SECTION: MOOKI'S STYLE -->
-  <section class="bg-[#fff9f0] py-12 md:py-16 px-5 overflow-hidden">
-    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+  <section class="overflow-hidden bg-[#fff9f0] py-12 md:py-16">
+    <div class="site-container flex flex-col items-center justify-center gap-8 md:flex-row md:gap-12">
       <div class="relative w-full max-w-[440px] h-[310px] sm:h-[340px] shrink-0" aria-label="Mooki's outfit">
         <div class="absolute left-1/2 top-1/2 w-48 h-48 sm:w-52 sm:h-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#25b5e8]"></div>
         <img src="assets/Mooki.png" alt="Mooki wearing an orange beanie, blue hoodie and sneakers" class="absolute left-1/2 top-1/2 z-10 h-[250px] sm:h-[280px] w-auto -translate-x-1/2 -translate-y-[45%] object-contain">
@@ -124,8 +131,8 @@
   </section>
 
   <!-- SECTION: WHAT MOOKI STAND FOR -->
-  <section class="relative overflow-hidden bg-[#2aadd7] px-5 py-6 text-white">
-    <div class="relative z-10 mx-auto max-w-[410px]">
+  <section class="relative overflow-hidden bg-[#2aadd7] py-6 text-white">
+    <div class="site-container relative z-10">
       <div class="relative mb-2 min-h-[72px]">
         <h2 class="w-fit pt-1 text-2xl font-black leading-tight drop-shadow-[1px_2px_0_rgba(0,86,142,0.55)] sm:text-3xl">
           What Mooki<br/>Stand For
@@ -159,20 +166,23 @@
   </section>
 
   <!-- BANNER CTA: MOOVE YOUR DAY WITH MOOKI -->
-  <section class="relative isolate flex aspect-[2.5/1] min-h-[210px] w-full items-center justify-end overflow-hidden bg-[#28aef0] bg-cover bg-center px-5 sm:px-8" style="background-image: url('assets/cta-bg.png');">
-    <div class="relative z-10 w-[56%] max-w-[560px] text-center sm:mr-[5%]">
+  <section class="relative isolate flex aspect-[2.5/1] min-h-[210px] w-full items-center overflow-hidden bg-[#28aef0] bg-cover bg-center" style="background-image: url('assets/cta-bg.png');">
+    <div class="site-container grid grid-cols-2 items-center">
+      <div aria-hidden="true"></div>
+      <div class="relative z-10 text-center">
       <h2 class="mb-3 text-xl font-black leading-[0.95] text-white [text-shadow:2px_2px_0_#111,-2px_-2px_0_#111,2px_-2px_0_#111,-2px_2px_0_#111,3px_4px_0_#111] sm:mb-5 sm:text-3xl md:text-5xl">
         Moove Your Day<br/><span class="text-[#8ce7ff]">With Mooki!</span>
       </h2>
       <a href="#buy" class="inline-block rounded-full border-2 border-gray-900 bg-[#0875e1] px-6 py-1.5 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 sm:px-8 sm:py-2 sm:text-lg">
         Buy Now
       </a>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[#fff9f0] px-6 py-5" id="contact">
-    <div class="mx-auto grid max-w-[660px] grid-cols-2 items-center gap-x-8 gap-y-5 sm:grid-cols-[1.2fr_1fr_1fr] sm:gap-x-10">
+  <footer class="bg-[#fff9f0] py-5" id="contact">
+    <div class="site-container grid grid-cols-2 items-center gap-x-8 gap-y-5 sm:grid-cols-[1.2fr_1fr_1fr] sm:gap-x-10">
       <div class="col-span-2 flex items-center gap-3 sm:col-span-1" aria-label="Mooki brand">
         <img src="assets/mooki-home.png" alt="Mooki" class="h-14 w-12 object-contain">
         <span class="h-14 border-l border-gray-300" aria-hidden="true"></span>

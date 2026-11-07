@@ -202,9 +202,38 @@
     document.body.classList.remove('overflow-hidden');
   }
 
+  // Mobile Nav Toggle
+  function initMobileNav() {
+    const toggleBtn = document.getElementById('mobile-nav-toggle');
+    const menu = document.getElementById('mobile-nav-menu');
+    if (!toggleBtn || !menu) return;
+
+    toggleBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', !isExpanded);
+      menu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!toggleBtn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   // Bind trigger buttons across page
   function bindTriggers() {
     createModalDOM();
+    initMobileNav();
 
     // CTA buttons (href="#buy" or data-order)
     document.querySelectorAll('a[href="#buy"], [data-order-cta]').forEach(el => {

@@ -31,13 +31,16 @@
     }
   };
 
+  // 2x3 Grid matching reference design:
+  // Row 1: Alfagift, Klik Indomaret, Shopee
+  // Row 2: Blibli, Tokopedia, Astro
   const stores = [
-    { name: 'Tokopedia', logo: 'assets/tokped.png', badge: 'Official Store', url: 'https://www.tokopedia.com' },
-    { name: 'Shopee', logo: 'assets/shope.png', badge: 'Shopee Mall', url: 'https://shopee.co.id' },
-    { name: 'Blibli', logo: 'assets/blibli.webp', badge: 'Official Store', url: 'https://www.blibli.com' },
-    { name: 'Klik Indomaret', logo: 'assets/klikidm.png', badge: 'Delivery Kilat', url: 'https://www.klikindomaret.com' },
-    { name: 'Alfagift', logo: 'assets/alfagift.png', badge: 'Bebas Ongkir', url: 'https://alfagift.id' },
-    { name: 'Astro', logo: 'assets/astro.png', badge: '15 Menit Sampai', url: 'https://astronauts.id' }
+    { name: 'Alfagift', logo: 'assets/alfagift.png', url: 'https://alfagift.id' },
+    { name: 'Klik Indomaret', logo: 'assets/klikidm.png', url: 'https://www.klikindomaret.com' },
+    { name: 'Shopee', logo: 'assets/shope.png', url: 'https://shopee.co.id' },
+    { name: 'Blibli', logo: 'assets/blibli.webp', url: 'https://www.blibli.com' },
+    { name: 'Tokopedia', logo: 'assets/tokped.png', url: 'https://www.tokopedia.com' },
+    { name: 'Astro', logo: 'assets/astro.png', url: 'https://astronauts.id' }
   ];
 
   let selectedProduct = null;
@@ -47,77 +50,68 @@
 
     const modal = document.createElement('div');
     modal.id = 'mooki-order-modal';
-    modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300';
+    modal.className = 'fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 bg-slate-950/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
     modal.setAttribute('aria-hidden', 'true');
 
     modal.innerHTML = `
-      <div id="mooki-modal-content" class="bg-white w-full max-w-xl rounded-3xl shadow-2xl border border-sky-100 overflow-hidden transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col">
-        <!-- Header Modal -->
-        <div class="relative bg-gradient-to-r from-sky-500 via-[#1FA2FF] to-sky-400 p-6 text-white shrink-0">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <img src="assets/Mooki.png" alt="Mooki" class="w-12 h-12 rounded-full border-2 border-white bg-white shadow-md object-cover" />
-              <div>
-                <h3 class="text-xl md:text-2xl font-black tracking-wide" id="modal-title">Pesan Mooki</h3>
-                <p class="text-xs md:text-sm text-sky-100 font-medium">Fuel up your day with fresh goodness!</p>
-              </div>
-            </div>
-            <button id="modal-close-btn" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all cursor-pointer" aria-label="Tutup Popup">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
-              </svg>
-            </button>
-          </div>
+      <div id="mooki-modal-content" class="relative bg-white w-full max-w-lg md:max-w-xl rounded-[28px] border-[2.5px] border-black shadow-[8px_8px_0px_#000] p-7 sm:p-9 transform scale-95 transition-transform duration-200 flex flex-col">
+        
+        <!-- Round Close Button Top-Right (Neo-Brutalist floating circle with hard shadow) -->
+        <button
+          id="modal-close-btn"
+          type="button"
+          aria-label="Close"
+          class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-10 h-10 rounded-full bg-white border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center justify-center transition-all cursor-pointer z-30"
+        >
+          <svg class="w-5 h-5 text-black stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <!-- Header: Centered Title matching reference -->
+        <div class="text-center mb-6">
+          <h3 id="modal-title" class="font-heading text-2xl sm:text-3xl font-bold text-slate-950 tracking-normal">
+            Mooki official store
+          </h3>
+          <p id="modal-subtitle" class="text-xs sm:text-sm text-slate-600 mt-1.5 font-medium">
+            Buy Mooki from any of our official stores
+          </p>
         </div>
 
-        <div class="p-6 overflow-y-auto space-y-5">
-          <!-- Pilih Varian / Product Selected Card -->
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5">Pilih Varian Favorit</label>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="product-pills-container">
-              ${Object.values(products).map(p => `
-                <button type="button" data-variant="${p.key}" class="product-variant-btn p-2 rounded-2xl border border-slate-200 hover:border-sky-400 bg-slate-50 hover:bg-sky-50/50 flex flex-col items-center text-center transition-all cursor-pointer group">
-                  <img src="${p.img}" alt="${p.name}" class="w-12 h-12 object-contain mb-1 transition-transform group-hover:scale-110" />
-                  <span class="text-xs font-bold text-slate-800 line-clamp-1">${p.name}</span>
-                </button>
-              `).join('')}
-            </div>
-          </div>
-
-          <!-- Pilihan Marketplace / Toko -->
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5">Beli di Official Store Rekanan</label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              ${stores.map(s => `
-                <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-2xl border border-slate-200/90 bg-white hover:border-[#1FA2FF] hover:bg-sky-50/40 hover:shadow-sm transition-all group">
-                  <div class="flex items-center gap-3">
-                    <div class="w-14 h-9 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-center p-1 overflow-hidden shrink-0">
-                      <img src="${s.logo}" alt="${s.name}" class="max-h-full max-w-full object-contain" />
-                    </div>
-                    <div>
-                      <div class="font-bold text-xs md:text-sm text-slate-900 group-hover:text-[#0075FF] transition-colors">${s.name}</div>
-                      <div class="text-[10px] text-slate-400 font-medium">${s.badge}</div>
-                    </div>
-                  </div>
-                  <span class="text-[11px] font-bold text-[#0075FF] bg-sky-50 group-hover:bg-[#0075FF] group-hover:text-white px-2.5 py-1 rounded-full transition-colors flex items-center gap-1 shrink-0">
-                    Beli
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  </span>
-                </a>
-              `).join('')}
-            </div>
-          </div>
-
-          <!-- Direct Order via WhatsApp -->
-          <div class="pt-1">
-            <a href="https://wa.me/6281234567890?text=Halo%20Mooki%2C%20saya%20ingin%20pesan%20produk%20Mooki" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-md transition-all transform hover:-translate-y-0.5">
-              <span>💬</span>
-              <span>Pesan Langsung via WhatsApp (+62 812-3456-7890)</span>
+        <!-- 2x3 Grid of Stores: Exactly like reference image -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-4 mb-6">
+          ${stores.map(s => `
+            <a
+              href="${s.url}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative bg-white rounded-2xl border-2 border-black shadow-[4px_4px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1.5px_1.5px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none h-24 sm:h-28 flex items-center justify-center p-4 transition-all"
+              title="Buy at ${s.name}"
+            >
+              <img
+                src="${s.logo}"
+                alt="${s.name}"
+                class="max-h-12 sm:max-h-14 max-w-[85%] object-contain transition-transform group-hover:scale-105 duration-200"
+              />
             </a>
-          </div>
+          `).join('')}
         </div>
+
+        <!-- Direct WhatsApp Link (with updated phone number) -->
+        <div class="text-center pt-1 border-t border-slate-100">
+          <a
+            id="modal-wa-link"
+            href="https://wa.me/6285143596912?text=Hi%20Mooki%20team%2C%20I%20want%20to%20order%20Mooki"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full border-2 border-black bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-[3px_3px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
+          >
+            <span>Or order on WhatsApp (+62 851-4359-6912)</span>
+          </a>
+        </div>
+
       </div>
     `;
 
@@ -154,19 +148,28 @@
     if (!modal) return;
 
     const titleEl = document.getElementById('modal-title');
-    if (selectedProduct && titleEl) {
-      titleEl.textContent = `Pesan ${selectedProduct.name}`;
-    } else if (titleEl) {
-      titleEl.textContent = 'Pesan Mooki';
+    const waLink = document.getElementById('modal-wa-link');
+
+    if (selectedProduct) {
+      if (titleEl) titleEl.textContent = `Order ${selectedProduct.name}`;
+      if (waLink) {
+        const msg = encodeURIComponent(`Hi Mooki team, I want to order ${selectedProduct.name}`);
+        waLink.href = `https://wa.me/6285143596912?text=${msg}`;
+      }
+    } else {
+      if (titleEl) titleEl.textContent = 'Mooki official store';
+      if (waLink) {
+        waLink.href = 'https://wa.me/6285143596912?text=Hi%20Mooki%20team%2C%20I%20want%20to%20order%20Mooki';
+      }
     }
 
     modal.querySelectorAll('.product-variant-btn').forEach(btn => {
       if (selectedProduct && btn.dataset.variant === key) {
-        btn.classList.add('border-sky-500', 'bg-sky-50', 'ring-2', 'ring-sky-400');
-        btn.classList.remove('border-slate-200', 'bg-slate-50');
+        btn.classList.add('bg-[#0075FF]', 'text-white');
+        btn.classList.remove('bg-slate-50', 'text-slate-900');
       } else {
-        btn.classList.remove('border-sky-500', 'bg-sky-50', 'ring-2', 'ring-sky-400');
-        btn.classList.add('border-slate-200', 'bg-slate-50');
+        btn.classList.remove('bg-[#0075FF]', 'text-white');
+        btn.classList.add('bg-slate-50', 'text-slate-900');
       }
     });
   }
@@ -243,31 +246,18 @@
       });
     });
 
-    // Product cards in index.html
-    const productGrid = document.querySelector('#products .grid');
-    if (productGrid) {
-      const cards = productGrid.querySelectorAll(':scope > div');
-      const keys = ['choco-blast', 'creamy-vanilla', 'strawberry-pop', 'banana-bounce'];
-      cards.forEach((card, idx) => {
-        card.classList.add('cursor-pointer');
-        card.setAttribute('title', 'Klik untuk pesan');
-        card.addEventListener('click', function () {
-          openModal(keys[idx]);
-        });
+    // Explicit variant triggers (index.html flavour sheet)
+    const variantTriggers = document.querySelectorAll('[data-order-variant]');
+    variantTriggers.forEach(el => {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(el.dataset.orderVariant);
       });
-    }
+    });
 
-    // Product cards in products.html
-    const accordionContainer = document.querySelector('section > div.flex-col.md\\:flex-row');
-    if (accordionContainer) {
-      const cards = accordionContainer.querySelectorAll(':scope > div');
-      const keys = ['choco-blast', 'creamy-vanilla', 'strawberry-pop', 'banana-bounce'];
-      cards.forEach((card, idx) => {
-        card.addEventListener('click', function () {
-          openModal(keys[idx]);
-        });
-      });
-    }
+    // Every variant entry point carries data-order-variant — no positional
+    // bindings, so pages can be reordered without opening the wrong flavour.
   }
 
   // Init when DOM is ready

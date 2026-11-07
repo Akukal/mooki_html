@@ -1,483 +1,835 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mooki - Contact Us</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Fredoka -->
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body, h1, h2, h3, h4, h5, h6, input, textarea, select, button {
-      font-family: 'Fredoka', cursive, sans-serif;
-    }
-  </style>
-</head>
-<body class="bg-[#FFFDF7] text-slate-900 antialiased selection:bg-sky-500 selection:text-white flex flex-col min-h-screen">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Talk to the Mooki team</title>
+    <meta
+      name="description"
+      content="Contact the Mooki team about retail or wholesale orders, reseller partnerships, event sponsorship or flavor questions. Official WhatsApp +62 851-4359-6912."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+         MOOKI — same system as index/about/products: cream paper,
+         ink outlines, sticker display type, one interactive blue.
+         ============================================================ */
+      :root {
+        --cream: #fbf8ee;
+        --paper: #fffdf7;
+        --ink: #101010;
+        --ink-soft: #4a4640;
+        --blue: #0066e0;
+        --blue-deep: #0052c2;
+        --blue-display: #1fa2ff;
+        --danger: #a11235;
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
 
-  <!-- FLOATING ISLAND NAVBAR -->
-  <header class="fixed top-4 left-0 right-0 z-40 px-4 sm:px-6">
-    <div class="max-w-6xl mx-auto bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between">
-      
-      <!-- Brand Logo & Name -->
-      <a href="index.html" class="flex items-center gap-3 group">
-        <img
-          src="assets/logo/mooki-logo.png"
-          alt="Mooki Logo"
-          class="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-110"
-        />
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        color: var(--ink);
+        background: var(--cream);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .font-heading,
+      .font-display {
+        font-family: "Fredoka", cursive, sans-serif;
+        letter-spacing: 0.005em;
+      }
+
+      ::selection {
+        background: var(--blue);
+        color: #fff;
+      }
+
+      a:focus-visible,
+      button:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+        border-radius: 8px;
+      }
+
+      .sticker {
+        -webkit-text-stroke: 3px var(--ink);
+        paint-order: stroke fill;
+        text-shadow: 0 4px 0 rgba(16, 16, 16, 0.16);
+      }
+      @media (min-width: 1024px) {
+        .sticker {
+          -webkit-text-stroke: 4.5px var(--ink);
+        }
+      }
+
+      .display-xl {
+        font-size: clamp(2.55rem, 6.2vw, 4.5rem);
+        line-height: 0.95;
+        font-weight: 700;
+      }
+
+      .splash {
+        position: absolute;
+        border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+        pointer-events: none;
+      }
+
+      /* ---- contact cards ---- */
+      .card {
+        display: block;
+        position: relative;
+        background: var(--paper);
+        border: 2px solid var(--ink);
+        border-radius: 20px;
+        padding: 20px 22px;
+        box-shadow: 5px 5px 0 var(--ink);
+        transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s;
+      }
+      a.card:hover,
+      a.card:focus-visible {
+        transform: translate(-2px, -2px);
+        box-shadow: 7px 7px 0 var(--ink);
+        background: #fff;
+      }
+      .card__label {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .card__value {
+        font-family: "Fredoka", sans-serif;
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 4px;
+      }
+      .card__note {
+        font-size: 0.8rem;
+        line-height: 1.55;
+        color: var(--ink-soft);
+        margin-top: 6px;
+      }
+      .card__icon {
+        width: 40px;
+        height: 40px;
+        flex: none;
+        display: grid;
+        place-items: center;
+        border: 2px solid var(--ink);
+        border-radius: 12px;
+        background: #fff;
+      }
+
+      /* ---- form ---- */
+      .form-panel {
+        background: #fff;
+        border: 2.5px solid var(--ink);
+        border-radius: 26px;
+        box-shadow: 8px 8px 0 var(--ink);
+        padding: clamp(22px, 3vw, 38px);
+      }
+      .field label {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin-bottom: 8px;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        background: #fff;
+        border: 2px solid var(--ink);
+        border-radius: 14px;
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        color: var(--ink);
+        transition: box-shadow 0.18s, border-color 0.18s;
+      }
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: #7d786f;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--blue);
+        box-shadow: 0 0 0 4px rgba(0, 102, 224, 0.18);
+      }
+      .field .is-invalid {
+        border-color: var(--danger);
+        box-shadow: 0 0 0 4px rgba(161, 18, 53, 0.12);
+      }
+      .field-error {
+        color: var(--danger);
+        font-size: 0.78rem;
+        font-weight: 700;
+        margin-top: 6px;
+      }
+      .req {
+        color: var(--danger);
+      }
+
+      .btn-submit {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: var(--blue);
+        color: #fff;
+        border: 2.5px solid var(--ink);
+        border-radius: 999px;
+        padding: 15px 28px;
+        font-weight: 800;
+        font-size: 1rem;
+        box-shadow: 4px 4px 0 var(--ink);
+        transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s;
+        cursor: pointer;
+      }
+      .btn-submit:hover {
+        background: var(--blue-deep);
+        transform: translate(-1px, -1px);
+        box-shadow: 6px 6px 0 var(--ink);
+      }
+      .btn-submit:active {
+        transform: translate(3px, 3px);
+        box-shadow: 1px 1px 0 var(--ink);
+      }
+
+      .feedback {
+        border: 2px solid var(--ink);
+        border-radius: 16px;
+        background: #e8f7ee;
+        color: #0c4a2f;
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 14px 16px;
+        text-align: center;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: var(--blue);
+        color: #fff;
+        border: 2.5px solid var(--ink);
+        border-radius: 999px;
+        padding: 14px 30px;
+        font-weight: 800;
+        font-size: 1rem;
+        box-shadow: 4px 4px 0 var(--ink);
+        transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s;
+        cursor: pointer;
+      }
+      .btn-primary:hover {
+        background: var(--blue-deep);
+        transform: translate(-1px, -1px);
+        box-shadow: 6px 6px 0 var(--ink);
+      }
+      .btn-primary:active {
+        transform: translate(3px, 3px);
+        box-shadow: 1px 1px 0 var(--ink);
+      }
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: transparent;
+        color: var(--ink);
+        border: 2.5px solid var(--ink);
+        border-radius: 999px;
+        padding: 14px 26px;
+        font-weight: 800;
+        font-size: 1rem;
+        transition: background 0.18s, color 0.18s, transform 0.18s var(--ease);
+        cursor: pointer;
+      }
+      .btn-ghost:hover {
+        background: var(--ink);
+        color: var(--cream);
+      }
+      .btn-ghost:active {
+        transform: scale(0.97);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+      }
+      .reveal.is-in {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .card,
+        .btn-submit,
+        .btn-primary {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a
+      href="#form"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:font-bold focus:text-[#0066E0] focus:shadow-lg"
+      >Skip to the form</a
+    >
+
+    <!-- ============ NAV ============ -->
+    <header class="fixed top-3 left-0 right-0 z-40 px-4 sm:px-6">
+      <div
+        class="max-w-[1180px] mx-auto bg-white/95 backdrop-blur-md border-2 border-[#101010] shadow-[0_5px_0_rgba(16,16,16,0.14)] rounded-full px-3 sm:px-5 py-2 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Mooki home">
+          <img
+            src="assets/logo/mooki-logo.png"
+            alt=""
+            class="h-8 w-auto object-contain transition-transform duration-300 group-hover:-rotate-6"
+          />
+          <span class="font-heading text-xl font-bold tracking-wide text-[#101010]">Mooki</span>
+          <span
+            class="hidden lg:inline-block text-[9px] uppercase font-extrabold tracking-[0.14em] px-2 py-0.5 rounded-full bg-[#FFEAA7] border border-[#101010] text-[#101010]"
+            >UHT Milk</span
+          >
+        </a>
+
+        <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+          <a
+            href="index.html"
+            class="text-[#4a4640] hover:text-[#0066E0] hover:bg-[#FBF8EE] font-semibold px-3 lg:px-4 py-1.5 rounded-full transition-colors text-sm whitespace-nowrap"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="text-[#4a4640] hover:text-[#0066E0] hover:bg-[#FBF8EE] font-semibold px-3 lg:px-4 py-1.5 rounded-full transition-colors text-sm whitespace-nowrap"
+            >About Mooki</a
+          >
+          <a
+            href="products.html"
+            class="text-[#4a4640] hover:text-[#0066E0] hover:bg-[#FBF8EE] font-semibold px-3 lg:px-4 py-1.5 rounded-full transition-colors text-sm whitespace-nowrap"
+            >Products</a
+          >
+          <a
+            href="contact.html"
+            aria-current="page"
+            class="bg-[#0066E0] text-white font-bold px-3 lg:px-4 py-1.5 rounded-full text-sm border border-[#101010]"
+            >Contact</a
+          >
+        </nav>
+
         <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold tracking-wide text-slate-900">Mooki</span>
-          <span class="hidden sm:inline-block text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-sky-100 text-[#0075FF]">UHT Milk</span>
-        </div>
-      </a>
+          <button
+            type="button"
+            data-order-cta
+            class="bg-[#0066E0] hover:bg-[#0052c2] active:translate-y-[2px] text-white font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-full border-2 border-[#101010] shadow-[2px_2px_0_#101010] transition-all cursor-pointer"
+          >
+            Order Now
+          </button>
 
-      <!-- Desktop Navigation Pill Links -->
-      <nav class="hidden md:flex items-center gap-1 bg-slate-50/80 p-1 rounded-full border border-slate-100">
+          <button
+            id="mobile-nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-nav-menu"
+            aria-label="Open navigation menu"
+            class="md:hidden w-10 h-10 rounded-full bg-[#FBF8EE] border-2 border-[#101010] text-[#101010] flex items-center justify-center cursor-pointer"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-nav-menu"
+        class="hidden max-w-[1180px] mx-auto mt-2 bg-white rounded-3xl p-4 border-2 border-[#101010] shadow-[0_8px_0_rgba(16,16,16,0.16)] flex-col gap-1.5 md:hidden"
+      >
         <a
           href="index.html"
-          class="text-slate-700 hover:text-[#0075FF] hover:bg-white font-semibold px-4 py-1.5 rounded-full transition-colors text-sm"
+          class="text-[#4a4640] hover:bg-[#FBF8EE] font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
         >
-          Home
+          <span>Home</span><span class="text-xs text-[#9a948a]">Main page</span>
         </a>
         <a
           href="about.html"
-          class="text-slate-700 hover:text-[#0075FF] hover:bg-white font-semibold px-4 py-1.5 rounded-full transition-colors text-sm"
+          class="text-[#4a4640] hover:bg-[#FBF8EE] font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
         >
-          About Mooki
+          <span>About Mooki</span><span class="text-xs text-[#9a948a]">Our story</span>
         </a>
         <a
           href="products.html"
-          class="text-slate-700 hover:text-[#0075FF] hover:bg-white font-semibold px-4 py-1.5 rounded-full transition-colors text-sm"
+          class="text-[#4a4640] hover:bg-[#FBF8EE] font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
         >
-          Products
+          <span>Products</span><span class="text-xs text-[#9a948a]">4 flavors</span>
         </a>
         <a
           href="contact.html"
-          class="bg-[#0075FF] text-white font-bold px-4 py-1.5 rounded-full shadow-sm text-sm"
+          aria-current="page"
+          class="bg-[#FFF3D0] text-[#101010] font-bold px-4 py-3 rounded-2xl flex items-center justify-between text-base"
         >
-          Contact
+          <span>Contact</span><span class="text-xs font-semibold opacity-60">Active</span>
         </a>
-      </nav>
-
-      <!-- Right Side: Order CTA + Mobile Hamburger -->
-      <div class="flex items-center gap-2.5">
-        <button
-          type="button"
-          onclick="window.MookiOrderModal ? window.MookiOrderModal.open() : null"
-          class="bg-[#0075FF] hover:bg-blue-600 active:scale-[0.96] text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center gap-1.5"
-        >
-          <span>Pesan Produk</span>
-          <span class="text-xs">🐮</span>
-        </button>
-
-        <!-- Mobile Nav Toggle Button -->
-        <button
-          id="mobile-nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="mobile-nav-menu"
-          aria-label="Buka menu navigasi"
-          class="md:hidden w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
       </div>
+    </header>
 
-    </div>
+    <main>
+      <!-- ============ HERO ============ -->
+      <section class="relative overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-10 sm:pb-14">
+        <div
+          class="splash"
+          aria-hidden="true"
+          style="
+            width: 44vw;
+            height: 44vw;
+            max-width: 600px;
+            max-height: 600px;
+            left: -16vw;
+            top: -10vw;
+            background: radial-gradient(circle at 40% 40%, rgba(183, 221, 239, 0.6), rgba(183, 221, 239, 0) 68%);
+          "
+        ></div>
+        <div
+          class="splash"
+          aria-hidden="true"
+          style="
+            width: 26vw;
+            height: 26vw;
+            max-width: 360px;
+            max-height: 360px;
+            right: -8vw;
+            bottom: -4vw;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 234, 167, 0.65), rgba(255, 234, 167, 0) 70%);
+          "
+        ></div>
 
-    <!-- Mobile Dropdown Menu -->
-    <div
-      id="mobile-nav-menu"
-      class="hidden max-w-6xl mx-auto mt-2 bg-white/95 backdrop-blur-md rounded-3xl p-5 border border-slate-200/90 shadow-2xl flex flex-col gap-2 md:hidden transition-all"
-    >
-      <a
-        href="index.html"
-        class="text-slate-700 hover:bg-slate-50 font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
-      >
-        <span>Home</span>
-        <span class="text-xs text-slate-400">Beranda</span>
-      </a>
-      <a
-        href="about.html"
-        class="text-slate-700 hover:bg-slate-50 font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
-      >
-        <span>About Mooki</span>
-        <span class="text-xs text-slate-400">Cerita Kami</span>
-      </a>
-      <a
-        href="products.html"
-        class="text-slate-700 hover:bg-slate-50 font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
-      >
-        <span>Products</span>
-        <span class="text-xs text-slate-400">4 Varian</span>
-      </a>
-      <a
-        href="contact.html"
-        class="bg-sky-50 text-[#0075FF] font-bold px-4 py-3 rounded-2xl flex items-center justify-between text-base"
-      >
-        <span>Contact</span>
-        <span class="text-xs font-normal">Active</span>
-      </a>
-    </div>
-  </header>
+        <div class="relative max-w-[1180px] mx-auto px-5 sm:px-8">
+          <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-10 items-end">
+            <div class="reveal">
+              <p class="inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#4a4640] mb-5">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#0066E0]"></span>
+                Contact · We're here to help
+              </p>
 
-  <!-- MAIN CONTACT SECTION -->
-  <main class="flex-grow pt-28 pb-12 md:pb-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      
-      <!-- Heading & Context -->
-      <div class="max-w-3xl mb-12 text-left">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100 text-[#0075FF] text-xs font-bold mb-4">
-          <span>🐮</span>
-          <span>Kami Siap Membantu</span>
-        </div>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
-          Ada Pertanyaan atau Ingin Kerjasama? Hubungi Kami!
-        </h1>
-        <p class="text-slate-600 text-base md:text-lg leading-relaxed">
-          Punya pertanyaan seputar varian rasa, kebutuhan pemesanan retail, kemitraan acara, atau sekadar ingin menyapa Mooki? Isi form di bawah untuk terhubung langsung dengan customer support via WhatsApp.
-        </p>
-      </div>
+              <h1 class="display-xl font-heading">
+                <span class="block text-white sticker">Got a Question?</span>
+                <span class="block text-[#1FA2FF] sticker">Talk to Mooki.</span>
+              </h1>
 
-      <!-- Grid 2 Kolom: Info Kontak & Form WhatsApp -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        
-        <!-- Kolom Kiri: Direct Info Cards -->
-        <div class="lg:col-span-5 space-y-6">
-          
-          <!-- Card WhatsApp -->
-          <a
-            href="https://wa.me/6281234567890"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block p-6 rounded-3xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-lg transition-all group"
-          >
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-                  <path fill="#25D366" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2z"/>
-                  <path fill="#FFF" d="M17.47 14.38c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
-                </svg>
-              </div>
-              <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">WhatsApp Resmi</span>
-                <h3 class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors mt-0.5">
-                  +62 812-3456-7890
-                </h3>
-                <p class="text-xs text-slate-500 mt-1">
-                  Respon cepat pada jam operasional kerja untuk pesan grosir dan kemitraan.
-                </p>
-              </div>
+              <svg class="mt-3 mb-6 w-[170px] sm:w-[210px]" viewBox="0 0 210 16" fill="none" aria-hidden="true">
+                <path
+                  d="M2 11C26 4 46 4 66 8s40 6 62 2 44-5 78 1"
+                  stroke="#0066E0"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                />
+              </svg>
             </div>
-          </a>
 
-          <!-- Card Instagram -->
-          <a
-            href="https://instagram.com/mooki__indonesia"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block p-6 rounded-3xl bg-white border border-slate-200 hover:border-pink-400 hover:shadow-lg transition-all group"
-          >
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-pink-50 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
-                  <defs>
-                    <linearGradient id="ig-contact-card" x1="0%" y1="100%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#fdf497"/>
-                      <stop offset="5%" stop-color="#fdf497"/>
-                      <stop offset="45%" stop-color="#fd5949"/>
-                      <stop offset="60%" stop-color="#d6249f"/>
-                      <stop offset="90%" stop-color="#285AEB"/>
-                    </linearGradient>
-                  </defs>
-                  <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-contact-card)"/>
-                  <path stroke="#ffffff" stroke-width="1.8" d="M12 16a4 4 0 100-8 4 4 0 000 8z" fill="none"/>
-                  <circle cx="17.5" cy="6.5" r="1.2" fill="#ffffff"/>
-                </svg>
-              </div>
-              <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Instagram Official</span>
-                <h3 class="text-lg font-bold text-slate-900 group-hover:text-pink-600 transition-colors mt-0.5">
-                  @mooki__indonesia
-                </h3>
-                <p class="text-xs text-slate-500 mt-1">
-                  Update event kampus, info promo, dan petualangan harian Mooki.
-                </p>
-              </div>
-            </div>
-          </a>
-
-          <!-- Card Lokasi & Jam Operasional -->
-          <div class="p-6 rounded-3xl bg-[#F6F4EB] border border-amber-200/60">
-            <h4 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
-              <span>📍</span>
-              <span>Pusat Operasional & Edukasi</span>
-            </h4>
-            <p class="text-xs text-slate-700 leading-relaxed">
-              Teaching Factory / Sentra Produk Olahan Susu Politeknik Negeri Jember, Kabupaten Jember, Jawa Timur.
-            </p>
-            <div class="mt-4 pt-3 border-t border-slate-300/50 flex items-center justify-between text-xs text-slate-600 font-medium">
-              <span>Jam Layanan:</span>
-              <span class="font-bold text-slate-800">Senin - Sabtu (08.00 - 17.00 WIB)</span>
+            <div class="reveal" style="transition-delay: 100ms">
+              <p class="max-w-[42ch] text-[#4a4640] text-base sm:text-lg leading-relaxed">
+                Questions about flavors, retail orders, reseller partnerships or event sponsorship?
+                Fill in the form below and your message is written straight into the official Mooki
+                WhatsApp chat.
+              </p>
             </div>
           </div>
-
         </div>
+      </section>
 
-        <!-- Kolom Kanan: Form Kirim WhatsApp -->
-        <div class="lg:col-span-7 bg-white p-7 sm:p-10 rounded-3xl border border-sky-100 shadow-xl relative">
-          
-          <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
-            <div>
-              <h2 class="text-2xl font-bold text-slate-900">Formulir Pesan Cepat</h2>
-              <p class="text-xs text-slate-500 mt-1">Pesan akan langsung tersusun rapi ke aplikasi WhatsApp resmi Mooki.</p>
-            </div>
-            <img src="assets/logo/mooki-logo.png" alt="Mooki" class="w-12 h-12 object-contain" />
-          </div>
-
-          <form id="contact-wa-form" class="space-y-5" novalidate>
-            
-            <!-- Nama -->
-            <div>
-              <label for="sender-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                Nama Lengkap <span class="text-rose-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="sender-name"
-                name="name"
-                placeholder="Tuliskan nama Anda"
-                required
-                class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:border-[#1FA2FF] focus:ring-4 focus:ring-sky-100 outline-none transition text-sm text-slate-900 placeholder:text-slate-400"
-              />
-              <p id="name-error" class="text-xs text-rose-500 font-medium mt-1.5 hidden">Mohon isi nama lengkap Anda.</p>
-            </div>
-
-            <!-- Kategori -->
-            <div>
-              <label for="sender-topic" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                Topik Keperluan <span class="text-rose-500">*</span>
-              </label>
-              <select
-                id="sender-topic"
-                name="topic"
-                class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:border-[#1FA2FF] focus:ring-4 focus:ring-sky-100 outline-none transition text-sm text-slate-900 bg-white"
+      <!-- ============ INFO + FORM ============ -->
+      <section class="pb-16 sm:pb-24">
+        <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+          <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-10 items-start">
+            <!-- INFO CARDS -->
+            <div class="space-y-4 reveal">
+              <a
+                href="https://wa.me/6285143596912?text=Hi%20Mooki%20team%2C%20I%20have%20a%20question"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="card"
               >
-                <option value="Pemesanan Produk Retail / Grosir">Pemesanan Produk Retail / Grosir</option>
-                <option value="Kemitraan Toko / Kantin / Reseller">Kemitraan Toko / Kantin / Reseller</option>
-                <option value="Sponsorship Acara Kampus / Sekolah">Sponsorship Acara Kampus / Sekolah</option>
-                <option value="Pertanyaan Varian Rasa & Komposisi">Pertanyaan Varian Rasa & Komposisi</option>
-                <option value="Saran & Masukan Lainnya">Saran & Masukan Lainnya</option>
-              </select>
-            </div>
+                <div class="flex items-start gap-4">
+                  <span class="card__icon" aria-hidden="true">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" fill="#25D366" />
+                      <path
+                        fill="#ffffff"
+                        d="M17.47 14.38c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"
+                      />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="card__label">Official WhatsApp</p>
+                    <p class="card__value">+62 851-4359-6912</p>
+                    <p class="card__note">
+                      Fast replies during working hours for wholesale and partnership orders.
+                    </p>
+                  </div>
+                </div>
+              </a>
 
-            <!-- Nomor WhatsApp Pengirim (Opsional) -->
-            <div>
-              <label for="sender-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                Nomor WhatsApp Anda <span class="text-slate-400 font-normal">(opsional)</span>
-              </label>
-              <input
-                type="tel"
-                id="sender-phone"
-                name="phone"
-                placeholder="Contoh: 081234567890"
-                class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:border-[#1FA2FF] focus:ring-4 focus:ring-sky-100 outline-none transition text-sm text-slate-900 placeholder:text-slate-400"
-              />
-            </div>
-
-            <!-- Pesan -->
-            <div>
-              <label for="sender-message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                Pesan / Keterangan <span class="text-rose-500">*</span>
-              </label>
-              <textarea
-                id="sender-message"
-                name="message"
-                rows="4"
-                placeholder="Tuliskan detail pertanyaan atau pesanan yang ingin Anda tanyakan..."
-                required
-                class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:border-[#1FA2FF] focus:ring-4 focus:ring-sky-100 outline-none transition text-sm text-slate-900 placeholder:text-slate-400"
-              ></textarea>
-              <p id="message-error" class="text-xs text-rose-500 font-medium mt-1.5 hidden">Mohon tuliskan pesan atau pertanyaan Anda.</p>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="pt-2">
-              <button
-                type="submit"
-                class="w-full bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98] text-white font-bold py-4 px-6 rounded-2xl shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-3 cursor-pointer text-base"
-              >
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path fill="#ffffff" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2z"/>
-                  <path fill="#25D366" d="M17.47 14.38c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
-                </svg>
-                <span>Kirim Pesan ke WhatsApp</span>
-              </button>
-            </div>
-
-            <!-- Feedback Success Note -->
-            <div id="form-feedback" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium text-center">
-              Membuka WhatsApp... Anda dapat meninjau dan mengirim pesan langsung di WhatsApp chat.
-            </div>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="bg-[#FBF8EE] py-12 px-6 mt-12 border-t border-amber-100/60" id="contact">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-      
-      <!-- Brand Logos -->
-      <div class="flex items-center gap-5">
-        <img
-          src="assets/logo/mooki-logo.png"
-          alt="Mooki"
-          class="h-12 w-auto object-contain"
-        />
-        <div class="h-8 w-px bg-slate-300"></div>
-        <img
-          src="assets/logo/polije.png"
-          alt="Politeknik Negeri Jember"
-          class="h-11 w-auto object-contain"
-        />
-      </div>
-
-      <!-- Links Container (Information & Social) -->
-      <div class="flex flex-row items-start gap-12 sm:gap-16 text-left">
-        <!-- Information Column -->
-        <div>
-          <h5 class="font-bold text-slate-900 text-base mb-3">Information</h5>
-          <ul class="space-y-2 text-sm text-slate-700">
-            <li><a href="about.html" class="hover:text-[#1FA2FF] transition">About Mooki</a></li>
-            <li><a href="products.html" class="hover:text-[#1FA2FF] transition">Products</a></li>
-            <li><a href="contact.html" class="hover:text-[#1FA2FF] transition font-bold text-[#1FA2FF]">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Social Media & Contact -->
-        <div>
-          <h5 class="font-bold text-slate-900 text-base mb-3">Social</h5>
-          <ul class="space-y-2.5 text-sm text-slate-700">
-            <li>
               <a
                 href="https://instagram.com/mooki__indonesia"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center gap-2 hover:text-[#1FA2FF] transition"
+                class="card"
               >
-                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
-                  <defs>
-                    <linearGradient id="ig-grad-contact" x1="0%" y1="100%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#fdf497"/>
-                      <stop offset="5%" stop-color="#fdf497"/>
-                      <stop offset="45%" stop-color="#fd5949"/>
-                      <stop offset="60%" stop-color="#d6249f"/>
-                      <stop offset="90%" stop-color="#285AEB"/>
-                    </linearGradient>
-                  </defs>
-                  <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-grad-contact)"/>
-                  <path stroke="#ffffff" stroke-width="1.8" d="M12 16a4 4 0 100-8 4 4 0 000 8z" fill="none"/>
-                  <circle cx="17.5" cy="6.5" r="1.2" fill="#ffffff"/>
-                </svg>
-                <span>@mooki__indonesia</span>
+                <div class="flex items-start gap-4">
+                  <span class="card__icon" aria-hidden="true">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                      <defs>
+                        <linearGradient id="ig-grad-contact" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#fdf497" />
+                          <stop offset="5%" stop-color="#fdf497" />
+                          <stop offset="45%" stop-color="#fd5949" />
+                          <stop offset="60%" stop-color="#d6249f" />
+                          <stop offset="90%" stop-color="#285AEB" />
+                        </linearGradient>
+                      </defs>
+                      <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-grad-contact)" />
+                      <path stroke="#ffffff" stroke-width="1.8" d="M12 16a4 4 0 100-8 4 4 0 000 8z" fill="none" />
+                      <circle cx="17.5" cy="6.5" r="1.2" fill="#ffffff" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="card__label">Official Instagram</p>
+                    <p class="card__value">@mooki__indonesia</p>
+                    <p class="card__note">Campus events, promos and everyday Mooki.</p>
+                  </div>
+                </div>
               </a>
-            </li>
-            <li>
-              <a
-                href="https://wa.me/6281234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-2 hover:text-[#1FA2FF] transition"
-              >
-                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" fill="#25D366"/>
-                  <path fill="#ffffff" d="M17.47 14.38c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
-                </svg>
-                <span>+62 812-3456-7890</span>
-              </a>
-            </li>
-          </ul>
+
+              <div class="card" style="background: #fff8e2">
+                <p class="card__label">Operations and training center</p>
+                <p class="mt-2 text-sm leading-relaxed text-[#4a4640]">
+                  Teaching Factory, Dairy Processing Center, Politeknik Negeri Jember, Jember Regency,
+                  East Java.
+                </p>
+                <div
+                  class="mt-4 pt-3 border-t-2 border-[#101010]/12 flex items-center justify-between gap-3 text-xs font-bold text-[#4a4640]"
+                >
+                  <span>Service hours</span>
+                  <span class="text-[#101010]">Mon to Sat, 08.00 to 17.00 WIB</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- FORM -->
+            <div id="form" class="form-panel reveal" style="transition-delay: 100ms">
+              <div class="flex items-start justify-between gap-4 mb-7 pb-5 border-b-2 border-[#101010]/12">
+                <div>
+                  <h2 class="font-heading font-bold text-[clamp(1.35rem,2.4vw,1.75rem)] leading-tight">
+                    Quick Message Form
+                  </h2>
+                  <p class="mt-1.5 text-sm text-[#4a4640]">
+                    Your message is formatted for you and opened in the official Mooki WhatsApp.
+                  </p>
+                </div>
+                <img src="assets/logo/mooki-logo.png" alt="" class="w-11 h-11 object-contain shrink-0" />
+              </div>
+
+              <form id="contact-wa-form" class="space-y-5" novalidate>
+                <div class="field">
+                  <label for="sender-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+                  <input
+                    type="text"
+                    id="sender-name"
+                    name="name"
+                    autocomplete="name"
+                    placeholder="Your full name"
+                    required
+                    aria-required="true"
+                    aria-describedby="name-error"
+                  />
+                  <p id="name-error" class="field-error hidden" aria-live="polite">
+                    Please enter your full name.
+                  </p>
+                </div>
+
+                <div class="field">
+                  <label for="sender-topic">What is this about</label>
+                  <select id="sender-topic" name="topic">
+                    <option value="Retail or wholesale order">Retail or wholesale order</option>
+                    <option value="Shop, canteen or reseller partnership">Shop, canteen or reseller partnership</option>
+                    <option value="Campus or school event sponsorship">Campus or school event sponsorship</option>
+                    <option value="Flavor and ingredient questions">Flavor and ingredient questions</option>
+                    <option value="Feedback or something else">Feedback or something else</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="sender-phone"
+                    >Your WhatsApp number <span class="font-normal normal-case tracking-normal text-[#6f6a60]">(optional)</span></label
+                  >
+                  <input
+                    type="tel"
+                    id="sender-phone"
+                    name="phone"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="For example 08123456789"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="sender-message">Message <span class="req" aria-hidden="true">*</span></label>
+                  <textarea
+                    id="sender-message"
+                    name="message"
+                    rows="4"
+                    placeholder="Tell us what you need..."
+                    required
+                    aria-required="true"
+                    aria-describedby="message-error"
+                  ></textarea>
+                  <p id="message-error" class="field-error hidden" aria-live="polite">
+                    Please write your message.
+                  </p>
+                </div>
+
+                <div class="pt-1">
+                  <button type="submit" class="btn-submit">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" fill="#ffffff" />
+                      <path
+                        fill="#0066E0"
+                        d="M17.47 14.38c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"
+                      />
+                    </svg>
+                    <span>Send to WhatsApp</span>
+                  </button>
+                </div>
+
+                <div id="form-feedback" class="feedback hidden" role="status" aria-live="polite">
+                  Opening WhatsApp. Review your message there, then press send.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA STRIP ============ -->
+      <section class="bg-[#0a6fc4] border-y-2 border-[#101010] py-12 sm:py-16">
+        <div class="max-w-[1180px] mx-auto px-5 sm:px-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <h2 class="font-heading font-bold text-white text-[clamp(1.6rem,3.4vw,2.4rem)] leading-tight">
+              No questions yet?
+            </h2>
+            <p class="mt-2 text-white/95 max-w-[46ch] leading-relaxed">
+              Then just order. Four flavors, delivered through our official stores or WhatsApp.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 shrink-0">
+            <button type="button" data-order-cta class="btn-primary">Order Now</button>
+            <a
+              href="products.html"
+              class="inline-flex items-center justify-center rounded-full border-2 border-white px-7 py-3.5 font-extrabold text-white transition hover:bg-white hover:text-[#101010]"
+              >See the flavors</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-[#FBF8EE] border-t-2 border-[#101010] pt-12 pb-8 px-5 sm:px-8">
+      <div class="max-w-[1180px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+        <div class="flex items-center gap-5">
+          <img src="assets/logo/mooki-logo.png" alt="Mooki" class="h-12 w-auto object-contain" />
+          <div class="h-8 w-px bg-[#101010]/20"></div>
+          <img src="assets/logo/polije.png" alt="Politeknik Negeri Jember" class="h-11 w-auto object-contain" />
+        </div>
+
+        <div class="flex flex-row items-start gap-12 sm:gap-16 text-left">
+          <div>
+            <h5 class="font-heading font-bold text-[#101010] text-base mb-3">Information</h5>
+            <ul class="space-y-2 text-sm text-[#4a4640]">
+              <li><a href="about.html" class="inline-block py-1 hover:text-[#0066E0] transition">About Mooki</a></li>
+              <li><a href="products.html" class="inline-block py-1 hover:text-[#0066E0] transition">Products</a></li>
+              <li><a href="contact.html" class="inline-block py-1 hover:text-[#0066E0] transition">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="font-heading font-bold text-[#101010] text-base mb-3">Social</h5>
+            <ul class="space-y-2.5 text-sm text-[#4a4640]">
+              <li>
+                <a
+                  href="https://instagram.com/mooki__indonesia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 py-1 hover:text-[#0066E0] transition"
+                >
+                  <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="ig-grad-contact-footer" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#fdf497" />
+                        <stop offset="5%" stop-color="#fdf497" />
+                        <stop offset="45%" stop-color="#fd5949" />
+                        <stop offset="60%" stop-color="#d6249f" />
+                        <stop offset="90%" stop-color="#285AEB" />
+                      </linearGradient>
+                    </defs>
+                    <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-grad-contact-footer)" />
+                    <path stroke="#ffffff" stroke-width="1.8" d="M12 16a4 4 0 100-8 4 4 0 000 8z" fill="none" />
+                    <circle cx="17.5" cy="6.5" r="1.2" fill="#ffffff" />
+                  </svg>
+                  <span>@mooki__indonesia</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/6285143596912"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 py-1 hover:text-[#0066E0] transition"
+                >
+                  <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" fill="#25D366" />
+                    <path
+                      fill="#ffffff"
+                      d="M17.47 14.38c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"
+                    />
+                  </svg>
+                  <span>+62 851-4359-6912</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
-    </div>
-  </footer>
+      <div
+        class="max-w-[1180px] mx-auto mt-10 pt-5 border-t border-[#101010]/10 flex flex-col sm:flex-row justify-between gap-2 text-xs text-[#6f6a60]"
+      >
+        <span>© 2026 Mooki, a product of Politeknik Negeri Jember.</span>
+        <span>UHT milk, four flavors.</span>
+      </div>
+    </footer>
 
-  <script src="order-modal.js"></script>
+    <script src="order-modal.js"></script>
+    <script>
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var items = document.querySelectorAll('.reveal');
+        if (!reduce && 'IntersectionObserver' in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-in');
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
+          );
+          items.forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          items.forEach(function (el) {
+            el.classList.add('is-in');
+          });
+        }
 
-  <!-- Script Form WhatsApp -->
-  <script>
-    document.getElementById('contact-wa-form').addEventListener('submit', function (e) {
-      e.preventDefault();
+        /* ---- WhatsApp form handoff ---- */
+        var form = document.getElementById('contact-wa-form');
+        if (!form) return;
 
-      const nameInput = document.getElementById('sender-name');
-      const topicInput = document.getElementById('sender-topic');
-      const phoneInput = document.getElementById('sender-phone');
-      const messageInput = document.getElementById('sender-message');
+        var nameInput = document.getElementById('sender-name');
+        var topicInput = document.getElementById('sender-topic');
+        var phoneInput = document.getElementById('sender-phone');
+        var messageInput = document.getElementById('sender-message');
+        var feedback = document.getElementById('form-feedback');
 
-      const nameError = document.getElementById('name-error');
-      const messageError = document.getElementById('message-error');
-      const feedback = document.getElementById('form-feedback');
+        var checks = [
+          { input: nameInput, error: document.getElementById('name-error') },
+          { input: messageInput, error: document.getElementById('message-error') }
+        ];
 
-      let isValid = true;
+        function setError(entry, invalid) {
+          entry.error.classList.toggle('hidden', !invalid);
+          entry.input.classList.toggle('is-invalid', invalid);
+          entry.input.setAttribute('aria-invalid', invalid ? 'true' : 'false');
+        }
 
-      // Validation Nama
-      if (!nameInput.value.trim()) {
-        nameError.classList.remove('hidden');
-        nameInput.classList.add('border-rose-400');
-        isValid = false;
-      } else {
-        nameError.classList.add('hidden');
-        nameInput.classList.remove('border-rose-400');
-      }
+        checks.forEach(function (entry) {
+          entry.input.addEventListener('input', function () {
+            if (entry.input.value.trim()) setError(entry, false);
+          });
+        });
 
-      // Validation Pesan
-      if (!messageInput.value.trim()) {
-        messageError.classList.remove('hidden');
-        messageInput.classList.add('border-rose-400');
-        isValid = false;
-      } else {
-        messageError.classList.add('hidden');
-        messageInput.classList.remove('border-rose-400');
-      }
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
 
-      if (!isValid) return;
+          var firstInvalid = null;
+          checks.forEach(function (entry) {
+            var invalid = !entry.input.value.trim();
+            setError(entry, invalid);
+            if (invalid && !firstInvalid) firstInvalid = entry.input;
+          });
 
-      // Susun pesan WhatsApp
-      const name = nameInput.value.trim();
-      const topic = topicInput.value;
-      const phone = phoneInput.value.trim() ? phoneInput.value.trim() : 'Tidak dicantumkan';
-      const userMessage = messageInput.value.trim();
+          if (firstInvalid) {
+            firstInvalid.focus();
+            return;
+          }
 
-      const waText = 
-`Halo Tim Mooki Indonesia!
+          var name = nameInput.value.trim();
+          var topic = topicInput.value;
+          var phone = phoneInput.value.trim() || 'Not provided';
+          var userMessage = messageInput.value.trim();
 
-Nama: ${name}
-Topik: ${topic}
-Nomor Kontak: ${phone}
+          var waText =
+            'Hi Mooki team!\n\nName: ' + name +
+            '\nTopic: ' + topic +
+            '\nContact number: ' + phone +
+            '\n\nMessage:\n' + userMessage;
 
-Pesan:
-${userMessage}`;
-
-      const encodedText = encodeURIComponent(waText);
-      const waUrl = `https://wa.me/6281234567890?text=${encodedText}`;
-
-      // Feedback & Buka WA
-      feedback.classList.remove('hidden');
-      setTimeout(() => {
-        window.open(waUrl, '_blank');
-      }, 350);
-    });
-  </script>
-</body>
+          feedback.classList.remove('hidden');
+          window.open('https://wa.me/6285143596912?text=' + encodeURIComponent(waText), '_blank');
+        });
+      })();
+    </script>
+  </body>
 </html>

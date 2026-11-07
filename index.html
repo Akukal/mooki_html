@@ -1,369 +1,1058 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mooki - UHT Milk</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Mooki | UHT milk in chocolate, vanilla, strawberry and banana</title>
+    <meta
+      name="description"
+      content="Mooki UHT milk comes in four flavors: Choco Blast, Creamy Vanilla, Strawberry Pop and Banana Bounce. Sterilized with no preservatives."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Fredoka) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
+      /* ============================================================
+         MOOKI — packaging sheet
+         Cream paper, ink outlines, and the four flavour blocks taken
+         straight from the carton artwork.
+         ============================================================ */
+      :root {
+        --cream: #fbf8ee;
+        --paper: #fffdf7;
+        --ink: #101010;
+        --ink-soft: #4a4640;
+        --blue: #0066e0; /* interactive blue: 5.3:1 on white */
+        --blue-deep: #0052c2;
+        --blue-display: #1fa2ff; /* display-only accent, always with ink stroke */
+        --blue-soft: #1fa2ff;
+        --choco: #a2592e;
+        --vanilla: #b7ddef;
+        --berry: #f6ccd7;
+        --banana: #ffeaa7;
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        color: var(--ink);
+        background: var(--cream);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .font-heading,
+      .font-display {
         font-family: "Fredoka", cursive, sans-serif;
+        letter-spacing: 0.005em;
+      }
+
+      ::selection {
+        background: var(--blue);
+        color: #fff;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+        border-radius: 8px;
+      }
+
+      /* ---- display type: sticker stroke (paint-order keeps the fill intact) ---- */
+      .sticker {
+        -webkit-text-stroke: 3px var(--ink);
+        paint-order: stroke fill;
+        text-shadow: 0 4px 0 rgba(16, 16, 16, 0.16);
+      }
+      @media (min-width: 1024px) {
+        .sticker {
+          -webkit-text-stroke: 4.5px var(--ink);
+        }
+      }
+
+      .display-xl {
+        font-size: clamp(2.55rem, 6.2vw, 4.5rem);
+        line-height: 0.95;
+        font-weight: 700;
+      }
+
+      /* ---- hero splash decor: milk splashes tinted per flavour ---- */
+      .splash {
+        position: absolute;
+        border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+        pointer-events: none;
+      }
+
+      /* ---- carton shelf ---- */
+      .shelf {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 10px 6px 28px;
+        isolation: isolate;
+      }
+      .shelf__blob {
+        position: absolute;
+        inset: 4% 1% 12% 1%;
+        background: radial-gradient(
+          120% 100% at 50% 18%,
+          #4fbaff 0%,
+          var(--blue) 62%,
+          #0053b8 100%
+        );
+        border-radius: 48% 52% 55% 45% / 55% 45% 55% 45%;
+        z-index: -1;
+      }
+      .shelf__puddle {
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        bottom: 14px;
+        height: 26px;
+        border-radius: 50%;
+        background: radial-gradient(
+          50% 50% at 50% 50%,
+          rgba(16, 16, 16, 0.26),
+          rgba(16, 16, 16, 0) 72%
+        );
+      }
+      .carton {
+        width: clamp(70px, 8.4vw, 126px);
+        height: auto;
+        margin-inline: -9px;
+        transform: rotate(var(--r, 0deg)) translateY(var(--y, 0));
+        transition: transform 0.55s var(--ease);
+        filter: drop-shadow(0 12px 14px rgba(16, 16, 16, 0.28));
+      }
+      .shelf:hover .carton {
+        transform: rotate(calc(var(--r, 0deg) * 0.5))
+          translateY(calc(var(--y, 0px) - 8px));
+      }
+      .shelf__mascot {
+        position: absolute;
+        right: 0;
+        bottom: 2px;
+        width: clamp(72px, 9.4vw, 128px);
+        height: auto;
+        transform: rotate(7deg);
+        filter: drop-shadow(0 10px 12px rgba(16, 16, 16, 0.25));
+        z-index: 2;
+      }
+
+      /* ---- proof row ---- */
+      .proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 22px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--ink-soft);
+      }
+      .proof li {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .proof li::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow:
+          0 0 0 2px var(--cream),
+          0 0 0 3px var(--ink);
+      }
+
+      /* ---- store strip ---- */
+      .store-strip {
+        border-top: 2px solid var(--ink);
+        background: var(--paper);
+      }
+      .store-row {
+        display: flex;
+        align-items: center;
+        gap: clamp(18px, 3.4vw, 46px);
+        overflow-x: auto;
+        padding: 16px 0;
+        scrollbar-width: none;
+      }
+      .store-row::-webkit-scrollbar {
+        display: none;
+      }
+      .store-row img {
+        height: 26px;
+        width: auto;
+        object-fit: contain;
+        opacity: 0.6;
+        filter: grayscale(1);
+        transition:
+          opacity 0.25s,
+          filter 0.25s,
+          transform 0.25s var(--ease);
+        flex: none;
+      }
+      .store-row a:hover img,
+      .store-row a:focus-visible img {
+        opacity: 1;
+        filter: none;
+        transform: translateY(-2px);
+      }
+
+      /* ---- flavour sheet: edge-to-edge quadrants, like the packaging ---- */
+      .flavor-sheet {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5px;
+        border-top: 2.5px solid var(--ink);
+        background: var(--ink);
+      }
+      @media (min-width: 768px) {
+        .flavor-sheet {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .flavor {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+        padding: clamp(24px, 3.4vw, 46px);
+        min-height: clamp(330px, 38vw, 440px);
+        overflow: hidden;
+        color: var(--fg, var(--ink));
+        background: var(--bg);
+      }
+      .flavor__idx {
+        font-family: "Fredoka", sans-serif;
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 0.8;
+        font-weight: 700;
+        opacity: 0.17;
+        position: absolute;
+        top: clamp(10px, 2vw, 20px);
+        right: clamp(16px, 2.4vw, 30px);
+        pointer-events: none;
+      }
+      .flavor__name {
+        font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+        line-height: 1;
+        font-weight: 700;
+      }
+      .flavor__desc {
+        margin-top: 7px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .flavor__art {
+        align-self: center;
+        height: clamp(160px, 19vw, 232px);
+        width: auto;
+        transform: rotate(-3deg);
+        transition: transform 0.55s var(--ease);
+        filter: drop-shadow(0 16px 18px rgba(16, 16, 16, 0.26));
+      }
+      .flavor:hover .flavor__art,
+      .flavor:focus-within .flavor__art {
+        transform: rotate(2deg) translateY(-10px) scale(1.04);
+      }
+      .flavor__foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .flavor__chips {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+      .btn-flavor {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 2px solid var(--ink);
+        border-radius: 999px;
+        padding: 10px 20px;
+        font-size: 0.8125rem;
+        font-weight: 800;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        transition:
+          transform 0.2s var(--ease),
+          box-shadow 0.2s var(--ease),
+          background 0.2s,
+          color 0.2s;
+      }
+      .btn-flavor:hover {
+        background: var(--ink);
+        color: var(--cream);
+        transform: translate(-2px, -2px);
+        box-shadow: 4px 4px 0 rgba(16, 16, 16, 0.35);
+      }
+      .btn-flavor:active {
+        transform: translate(0, 0);
+        box-shadow: none;
+      }
+
+      /* ---- reasons list ---- */
+      .reasons {
+        border-top: 2px solid var(--ink);
+      }
+      .reasons li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 4px 22px;
+        padding: 24px 0;
+        border-bottom: 2px solid rgba(16, 16, 16, 0.14);
+      }
+      .reasons .num {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--blue);
+        padding-top: 5px;
+      }
+      .reasons h3 {
+        font-size: clamp(1.2rem, 2.1vw, 1.5rem);
+        font-weight: 600;
+      }
+      .reasons p {
+        grid-column: 2;
+        color: var(--ink-soft);
+        font-size: 0.97rem;
+        line-height: 1.65;
+        max-width: 48ch;
+      }
+
+      /* ---- seal badge ---- */
+      .seal {
+        width: 128px;
+        height: 128px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 2.5px dashed var(--ink);
+        background: var(--blue);
+        color: #fff;
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        font-size: 1.3rem;
+        line-height: 1.05;
+        text-align: center;
+        transform: rotate(-8deg);
+        box-shadow: 5px 5px 0 var(--ink);
+      }
+
+      /* ---- buttons ---- */
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: var(--blue);
+        color: #fff;
+        border: 2.5px solid var(--ink);
+        border-radius: 999px;
+        padding: 14px 30px;
+        font-weight: 800;
+        font-size: 1rem;
+        box-shadow: 4px 4px 0 var(--ink);
+        transition:
+          transform 0.18s var(--ease),
+          box-shadow 0.18s var(--ease),
+          background 0.18s;
+        cursor: pointer;
+      }
+      .btn-primary:hover {
+        background: var(--blue-deep);
+        transform: translate(-1px, -1px);
+        box-shadow: 6px 6px 0 var(--ink);
+      }
+      .btn-primary:active {
+        transform: translate(3px, 3px);
+        box-shadow: 1px 1px 0 var(--ink);
+      }
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: transparent;
+        color: var(--ink);
+        border: 2.5px solid var(--ink);
+        border-radius: 999px;
+        padding: 14px 26px;
+        font-weight: 800;
+        font-size: 1rem;
+        transition:
+          background 0.18s,
+          color 0.18s,
+          transform 0.18s var(--ease);
+        cursor: pointer;
+      }
+      .btn-ghost:hover {
+        background: var(--ink);
+        color: var(--cream);
+      }
+      .btn-ghost:active {
+        transform: scale(0.97);
+      }
+
+      /* ---- scroll reveal ---- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.75s var(--ease),
+          transform 0.75s var(--ease);
+      }
+      .reveal.is-in {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .carton,
+        .flavor__art,
+        .shelf:hover .carton,
+        .flavor:hover .flavor__art {
+          transition: none;
+          transform: rotate(var(--r, 0deg));
+        }
       }
     </style>
   </head>
-  <body class="bg-white text-gray-800 antialiased selection:bg-sky-500 selection:text-white">
+  <body>
+    <a
+      href="#flavors"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:font-bold focus:text-[#0075FF] focus:shadow-lg"
+      >Skip to the flavors</a
+    >
 
-    <!-- FLOATING ISLAND NAVBAR -->
-    <header class="fixed top-4 left-0 right-0 z-40 px-4 sm:px-6">
-      <div class="max-w-6xl mx-auto bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between">
-        
-        <!-- Brand Logo & Name -->
-        <a href="index.html" class="flex items-center gap-3 group">
+    <!-- ============ NAV ============ -->
+    <header class="fixed top-3 left-0 right-0 z-40 px-4 sm:px-6">
+      <div
+        class="max-w-[1180px] mx-auto bg-white/95 backdrop-blur-md border-2 border-[#101010] shadow-[0_5px_0_rgba(16,16,16,0.14)] rounded-full px-3 sm:px-5 py-2 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="flex items-center gap-2.5 group"
+          aria-label="Mooki home"
+        >
           <img
             src="assets/logo/mooki-logo.png"
-            alt="Mooki Logo"
-            class="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-110"
+            alt=""
+            class="h-8 w-auto object-contain transition-transform duration-300 group-hover:-rotate-6"
           />
-          <div class="flex items-center gap-2">
-            <span class="text-2xl font-bold tracking-wide text-slate-900">Mooki</span>
-            <span class="hidden sm:inline-block text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-sky-100 text-[#0075FF]">UHT Milk</span>
-          </div>
+          <span
+            class="font-heading text-xl font-bold tracking-wide text-[#101010]"
+            >Mooki</span
+          >
+          <span
+            class="hidden lg:inline-block text-[9px] uppercase font-extrabold tracking-[0.14em] px-2 py-0.5 rounded-full bg-[#FFEAA7] border border-[#101010] text-[#101010]"
+            >UHT Milk</span
+          >
         </a>
 
-        <!-- Desktop Navigation Pill Links -->
-        <nav class="hidden md:flex items-center gap-1 bg-slate-50/80 p-1 rounded-full border border-slate-100">
+        <nav
+          class="hidden md:flex items-center gap-1"
+          aria-label="Main navigation"
+        >
           <a
             href="index.html"
-            class="bg-[#0075FF] text-white font-bold px-4 py-1.5 rounded-full shadow-sm text-sm"
+            aria-current="page"
+            class="bg-[#0066E0] text-white font-bold px-3 lg:px-4 py-1.5 rounded-full text-sm border border-[#101010]"
+            >Home</a
           >
-            Home
-          </a>
           <a
             href="about.html"
-            class="text-slate-700 hover:text-[#0075FF] hover:bg-white font-semibold px-4 py-1.5 rounded-full transition-colors text-sm"
+            class="text-[#4a4640] hover:text-[#0066E0] hover:bg-[#FBF8EE] font-semibold px-3 lg:px-4 py-1.5 rounded-full transition-colors text-sm whitespace-nowrap"
+            >About Mooki</a
           >
-            About Mooki
-          </a>
           <a
             href="products.html"
-            class="text-slate-700 hover:text-[#0075FF] hover:bg-white font-semibold px-4 py-1.5 rounded-full transition-colors text-sm"
+            class="text-[#4a4640] hover:text-[#0066E0] hover:bg-[#FBF8EE] font-semibold px-3 lg:px-4 py-1.5 rounded-full transition-colors text-sm whitespace-nowrap"
+            >Products</a
           >
-            Products
-          </a>
           <a
             href="contact.html"
-            class="text-slate-700 hover:text-[#0075FF] hover:bg-white font-semibold px-4 py-1.5 rounded-full transition-colors text-sm"
+            class="text-[#4a4640] hover:text-[#0066E0] hover:bg-[#FBF8EE] font-semibold px-3 lg:px-4 py-1.5 rounded-full transition-colors text-sm whitespace-nowrap"
+            >Contact</a
           >
-            Contact
-          </a>
         </nav>
 
-        <!-- Right Side: Order CTA + Mobile Hamburger -->
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2">
           <button
             type="button"
-            onclick="window.MookiOrderModal ? window.MookiOrderModal.open() : null"
-            class="bg-[#0075FF] hover:bg-blue-600 active:scale-[0.96] text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center gap-1.5"
+            data-order-cta
+            class="bg-[#0066E0] hover:bg-[#0052c2] active:translate-y-[2px] text-white font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-full border-2 border-[#101010] shadow-[2px_2px_0_#101010] transition-all cursor-pointer"
           >
-            <span>Pesan Produk</span>
-            <span class="text-xs">🐮</span>
+            Order Now
           </button>
 
-          <!-- Mobile Nav Toggle Button -->
           <button
             id="mobile-nav-toggle"
             type="button"
             aria-expanded="false"
             aria-controls="mobile-nav-menu"
-            aria-label="Buka menu navigasi"
-            class="md:hidden w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
-        </div>
-
-      </div>
-
-      <!-- Mobile Dropdown Menu -->
-      <div
-        id="mobile-nav-menu"
-        class="hidden max-w-6xl mx-auto mt-2 bg-white/95 backdrop-blur-md rounded-3xl p-5 border border-slate-200/90 shadow-2xl flex flex-col gap-2 md:hidden transition-all"
-      >
-        <a
-          href="index.html"
-          class="bg-sky-50 text-[#0075FF] font-bold px-4 py-3 rounded-2xl flex items-center justify-between text-base"
-        >
-          <span>Home</span>
-          <span class="text-xs font-normal">Active</span>
-        </a>
-        <a
-          href="about.html"
-          class="text-slate-700 hover:bg-slate-50 font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
-        >
-          <span>About Mooki</span>
-          <span class="text-xs text-slate-400">Cerita Kami</span>
-        </a>
-        <a
-          href="products.html"
-          class="text-slate-700 hover:bg-slate-50 font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
-        >
-          <span>Products</span>
-          <span class="text-xs text-slate-400">4 Varian</span>
-        </a>
-        <a
-          href="contact.html"
-          class="text-slate-700 hover:bg-slate-50 font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
-        >
-          <span>Contact</span>
-          <span class="text-xs text-slate-400">Hubungi Kami</span>
-        </a>
-      </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <div
-      class="relative w-full h-[520px] md:h-[650px] bg-cover bg-center pt-24"
-      style="
-        background-image: url(&quot;https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=1600&auto=format&fit=crop&quot;);
-      "
-    >
-      <!-- Overlay Transparan -->
-      <div class="absolute inset-0 bg-black/25"></div>
-    </div>
-
-    <!-- SECTION: WHY MOOKI -->
-    <section class="py-20 px-6 max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-black text-[#1FA2FF] mb-2">
-        Why Mooki?
-      </h2>
-      <p class="text-gray-600 font-medium mb-16">Fuel Up with Goodness</p>
-
-      <div
-        class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 text-left"
-      >
-        <div class="max-w-md">
-          <h3 class="text-2xl font-bold text-[#1FA2FF] mb-3">
-            100% Fresh UHT Quality
-          </h3>
-          <p class="text-gray-500 text-base leading-relaxed">
-            Locked-in freshness without artificial preservatives.
-          </p>
-        </div>
-
-        <!-- Icon Shield Badge -->
-        <div class="relative w-36 h-36 flex items-center justify-center">
-          <div
-            class="w-32 h-32 rounded-full border-4 border-dashed border-sky-300 p-2 flex flex-col items-center justify-center text-sky-500"
+            aria-label="Open navigation menu"
+            class="md:hidden w-10 h-10 rounded-full bg-[#FBF8EE] border-2 border-[#101010] text-[#101010] flex items-center justify-center cursor-pointer"
           >
             <svg
-              class="w-8 h-8 mb-1"
+              class="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="2"
-                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.6 15.1a2 2 0 00-1.022.547l-1.096 1.096a2 2 0 00-.586 1.414V20a2 2 0 002 2h16a2 2 0 002-2v-1.843a2 2 0 00-.586-1.414l-1.096-1.096z"
-              ></path>
+                stroke-width="2.5"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
-            <span class="font-extrabold text-sm">100%</span>
-          </div>
+          </button>
         </div>
       </div>
-    </section>
 
-    <!-- SECTION: YOUR DAILY SIDEKICK -->
-    <section class="bg-[#FFFDF3] py-20 px-6">
       <div
-        class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12"
+        id="mobile-nav-menu"
+        class="hidden max-w-[1180px] mx-auto mt-2 bg-white rounded-3xl p-4 border-2 border-[#101010] shadow-[0_8px_0_rgba(16,16,16,0.16)] flex-col gap-1.5 md:hidden"
       >
-        <!-- Character Avatar Container -->
-        <div
-          class="w-72 h-72 md:w-96 md:h-96 rounded-full bg-[#1FA2FF] flex items-center justify-center overflow-hidden shrink-0 shadow-lg"
-        >
-          <img
-            src="assets/Mooki.png"
-            alt="Mooki"
-            class="w-full h-full object-contain p-4"
-          />
-        </div>
-
-        <!-- Content -->
-        <div class="space-y-4">
-          <h2 class="text-4xl md:text-5xl font-black text-[#1FA2FF]">
-            Your Daily Sidekick
-          </h2>
-          <h4 class="font-bold text-gray-800 text-lg">Hey, I'm Mooki!</h4>
-          <p class="text-gray-600 leading-relaxed max-w-xl">
-            Your cool, hoodie-wearing daily buddy! Whenever you need a boost of
-            positive vibes, instant energy, or a sweet escape, I'm right here.
-            Let's make every day an epic adventure!
-          </p>
-          <div class="pt-2">
-            <a
-              href="#about"
-              class="inline-block bg-[#0075FF] hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-full shadow-md transition transform hover:-translate-y-0.5"
-            >
-              Get To Know Mooki
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: TASTE THE FUN / PRODUCTS -->
-    <section id="products" class="py-20 px-6 max-w-6xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-black text-[#1FA2FF] mb-2">
-        Taste The Fun
-      </h2>
-      <p class="text-gray-600 font-medium mb-6">Which one's your vibe?</p>
-
-      <div class="mb-12">
         <a
-          href="#all-products"
-          class="inline-block bg-[#0075FF] hover:bg-blue-700 text-white font-bold px-8 py-2.5 rounded-full shadow-sm transition"
+          href="index.html"
+          aria-current="page"
+          class="bg-[#FFF3D0] text-[#101010] font-bold px-4 py-3 rounded-2xl flex items-center justify-between text-base"
         >
-          All Products
+          <span>Home</span
+          ><span class="text-xs font-semibold opacity-60">Active</span>
+        </a>
+        <a
+          href="about.html"
+          class="text-[#4a4640] hover:bg-[#FBF8EE] font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
+        >
+          <span>About Mooki</span
+          ><span class="text-xs text-[#9a948a]">Our story</span>
+        </a>
+        <a
+          href="products.html"
+          class="text-[#4a4640] hover:bg-[#FBF8EE] font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
+        >
+          <span>Products</span
+          ><span class="text-xs text-[#9a948a]">4 flavors</span>
+        </a>
+        <a
+          href="contact.html"
+          class="text-[#4a4640] hover:bg-[#FBF8EE] font-semibold px-4 py-3 rounded-2xl flex items-center justify-between transition-colors text-base"
+        >
+          <span>Contact</span
+          ><span class="text-xs text-[#9a948a]">Talk to us</span>
         </a>
       </div>
+    </header>
 
-      <!-- Grid Produk 2x2 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Choco Blast -->
+    <main>
+      <!-- ============ HERO ============ -->
+      <section class="relative overflow-hidden pt-28 sm:pt-32 lg:pt-36">
         <div
-          data-variant="choco-blast"
-          class="product-card bg-[#B87042] rounded-2xl p-8 text-white flex flex-col items-center justify-between min-h-[380px] shadow-sm relative overflow-hidden group cursor-pointer transition transform hover:-translate-y-1 hover:shadow-xl"
-        >
-          <h3 class="text-3xl font-black tracking-wide mb-4">Choco Blast</h3>
-          <img
-            src="assets/products/choco-blast.png"
-            alt="Choco Blast"
-            class="w-36 h-36 my-auto transition transform group-hover:scale-110 duration-300 drop-shadow-lg"
-          />
-          <div class="mt-4 flex flex-col items-center gap-3">
-            <span class="text-sm font-semibold opacity-90">Chocolate Flavored Milk</span>
-            <button type="button" class="bg-white/20 hover:bg-white text-white hover:text-[#B87042] font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full border border-white/40 transition-all shadow-sm">
-              Pesan Sekarang
-            </button>
+          class="splash"
+          aria-hidden="true"
+          style="
+            width: 46vw;
+            height: 46vw;
+            max-width: 620px;
+            max-height: 620px;
+            left: -14vw;
+            top: -8vw;
+            background: radial-gradient(
+              circle at 40% 40%,
+              rgba(183, 221, 239, 0.6),
+              rgba(183, 221, 239, 0) 68%
+            );
+          "
+        ></div>
+        <div
+          class="splash"
+          aria-hidden="true"
+          style="
+            width: 30vw;
+            height: 30vw;
+            max-width: 420px;
+            max-height: 420px;
+            right: -6vw;
+            bottom: 2vw;
+            background: radial-gradient(
+              circle at 50% 50%,
+              rgba(255, 234, 167, 0.65),
+              rgba(255, 234, 167, 0) 70%
+            );
+          "
+        ></div>
+
+        <div class="relative max-w-[1180px] mx-auto px-5 sm:px-8">
+          <div
+            class="grid lg:grid-cols-[1.04fr_0.96fr] gap-10 lg:gap-4 items-center"
+          >
+            <div class="reveal">
+              <p
+                class="inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#4a4640] mb-5"
+              >
+                <span
+                  class="inline-block w-2.5 h-2.5 rounded-full bg-[#0075FF]"
+                ></span>
+                UHT Milk · Four Flavors
+              </p>
+
+              <h1 class="display-xl font-heading">
+                <span class="block text-white sticker">Moove Your</span>
+                <span class="block text-[#1FA2FF] sticker"
+                  >Day With Mooki!</span
+                >
+              </h1>
+
+              <svg
+                class="mt-3 mb-6 w-[190px] sm:w-[240px]"
+                viewBox="0 0 240 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 11C28 4 52 4 74 8s46 6 74 2 54-5 90 1"
+                  stroke="#0075FF"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              <p
+                class="max-w-[46ch] text-[#4a4640] text-base sm:text-lg leading-relaxed"
+              >
+                UHT milk in four flavors: chocolate, vanilla, strawberry and banana. Sterilized with no preservatives, ready for the morning class and the late shift.
+              </p>
+
+              <div class="mt-8 flex flex-wrap items-center gap-3">
+                <button type="button" data-order-cta class="btn-primary">
+                  Order Now
+                </button>
+                <a href="#flavors" class="btn-ghost">See the four flavors</a>
+              </div>
+
+              <ul class="proof mt-9">
+                <li>Fresh cow's milk</li>
+                <li>No preservatives</li>
+                <li>UHT sterilized</li>
+              </ul>
+            </div>
+
+            <div class="reveal" style="transition-delay: 120ms">
+              <div
+                class="shelf"
+                role="img"
+                aria-label="The four Mooki flavors: Choco Blast, Creamy Vanilla, Strawberry Pop and Banana Bounce"
+              >
+                <span class="shelf__blob" aria-hidden="true"></span>
+                <span class="shelf__puddle" aria-hidden="true"></span>
+                <img
+                  class="carton"
+                  src="assets/products/choco-blast.png"
+                  alt=""
+                  style="--r: -12deg; --y: 4px"
+                />
+                <img
+                  class="carton"
+                  src="assets/products/creamy-vanilla.png"
+                  alt=""
+                  style="--r: -4deg; --y: 0"
+                />
+                <img
+                  class="carton"
+                  src="assets/products/strawberry-pop.png"
+                  alt=""
+                  style="--r: 5deg; --y: 6px"
+                />
+                <img
+                  class="carton"
+                  src="assets/products/banana-bounce.png"
+                  alt=""
+                  style="--r: 13deg; --y: 2px"
+                />
+                <img
+                  class="shelf__mascot"
+                  src="assets/Mooki.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Creamy Vanilla -->
-        <div
-          data-variant="creamy-vanilla"
-          class="product-card bg-[#BCE3ED] rounded-2xl p-8 text-gray-800 flex flex-col items-center justify-between min-h-[380px] shadow-sm relative overflow-hidden group cursor-pointer transition transform hover:-translate-y-1 hover:shadow-xl"
-        >
-          <h3 class="text-3xl font-black tracking-wide mb-4">Creamy Vanilla</h3>
-          <img
-            src="assets/products/creamy-vanilla.png"
-            alt="Creamy Vanilla"
-            class="w-36 h-36 my-auto transition transform group-hover:scale-110 duration-300 drop-shadow-lg"
-          />
-          <div class="mt-4 flex flex-col items-center gap-3">
-            <span class="text-sm font-semibold opacity-90">Vanilla Flavored Milk</span>
-            <button type="button" class="bg-sky-500/20 hover:bg-[#0075FF] text-slate-800 hover:text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full border border-sky-400/40 transition-all shadow-sm">
-              Pesan Sekarang
-            </button>
-          </div>
-        </div>
-
-        <!-- Strawberry Pop -->
-        <div
-          data-variant="strawberry-pop"
-          class="product-card bg-[#F6C6D6] rounded-2xl p-8 text-gray-800 flex flex-col items-center justify-between min-h-[380px] shadow-sm relative overflow-hidden group cursor-pointer transition transform hover:-translate-y-1 hover:shadow-xl"
-        >
-          <h3 class="text-3xl font-black tracking-wide mb-4">Strawberry Pop</h3>
-          <img
-            src="assets/products/strawberry-pop.png"
-            alt="Strawberry Pop"
-            class="w-36 h-36 my-auto transition transform group-hover:scale-110 duration-300 drop-shadow-lg"
-          />
-          <div class="mt-4 flex flex-col items-center gap-3">
-            <span class="text-sm font-semibold opacity-90">Fruity Sweetness</span>
-            <button type="button" class="bg-rose-500/20 hover:bg-rose-500 text-slate-800 hover:text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full border border-rose-400/40 transition-all shadow-sm">
-              Pesan Sekarang
-            </button>
-          </div>
-        </div>
-
-        <!-- Banana Bounce -->
-        <div
-          data-variant="banana-bounce"
-          class="product-card bg-[#F8E58C] rounded-2xl p-8 text-gray-800 flex flex-col items-center justify-between min-h-[380px] shadow-sm relative overflow-hidden group cursor-pointer transition transform hover:-translate-y-1 hover:shadow-xl"
-        >
-          <h3 class="text-3xl font-black tracking-wide mb-4">Banana Bounce</h3>
-          <img
-            src="assets/products/banana-bounce.png"
-            alt="Banana Bounce"
-            class="w-36 h-36 my-auto transition transform group-hover:scale-110 duration-300 drop-shadow-lg"
-          />
-          <div class="mt-4 flex flex-col items-center gap-3">
-            <span class="text-sm font-semibold opacity-90">Banana Flavored Milk</span>
-            <button type="button" class="bg-amber-500/20 hover:bg-amber-500 text-slate-800 hover:text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full border border-amber-400/40 transition-all shadow-sm">
-              Pesan Sekarang
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BANNER CTA: MOOVE YOUR DAY WITH MOOKI -->
-    <section
-      class="relative w-full bg-cover bg-center overflow-hidden flex items-center min-h-[420px] md:min-h-[520px] lg:min-h-[553px]"
-      style="background-image: url('assets/cta-bg.png');"
-    >
-      <div class="w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 flex justify-center md:justify-end">
-        <div class="w-full md:w-7/12 lg:w-1/2 flex flex-col items-center text-center py-12 md:py-0">
-          <h2
-            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] mb-8 select-none"
-            style="filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));"
+        <div class="store-strip mt-10 sm:mt-14">
+          <div
+            class="max-w-[1180px] mx-auto px-5 sm:px-8 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-8"
           >
             <span
-              class="block text-white"
-              style="-webkit-text-stroke: 3.5px #000; paint-order: stroke fill;"
+              class="shrink-0 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#4a4640] pt-4 sm:pt-0"
+              >Available at</span
             >
-              Moove Your Day
-            </span>
-            <span
-              class="block text-[#38BDF8]"
-              style="-webkit-text-stroke: 3.5px #000; paint-order: stroke fill;"
-            >
-              With Mooki!
-            </span>
-          </h2>
-          <a
-            href="#buy"
-            class="inline-block bg-[#0075FF] hover:bg-[#005cd6] text-white font-bold text-xl md:text-2xl px-12 py-3.5 rounded-full border-2 border-black shadow-[0_6px_16px_rgba(0,0,0,0.3)] transition transform hover:scale-105 active:scale-95"
-          >
-            Buy Now
-          </a>
+            <div class="store-row flex-1">
+              <a
+                href="https://alfagift.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy Mooki at Alfagift"
+                ><img src="assets/alfagift.png" alt="Alfagift"
+              /></a>
+              <a
+                href="https://www.klikindomaret.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy Mooki at Klik Indomaret"
+                ><img src="assets/klikidm.png" alt="Klik Indomaret"
+              /></a>
+              <a
+                href="https://shopee.co.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy Mooki at Shopee"
+                ><img src="assets/shope.png" alt="Shopee"
+              /></a>
+              <a
+                href="https://www.blibli.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy Mooki at Blibli"
+                ><img src="assets/blibli.webp" alt="Blibli"
+              /></a>
+              <a
+                href="https://www.tokopedia.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy Mooki at Tokopedia"
+                ><img src="assets/tokped.png" alt="Tokopedia"
+              /></a>
+              <a
+                href="https://astronauts.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy Mooki at Astro"
+                ><img src="assets/astro.png" alt="Astro"
+              /></a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#FBF8EE] py-12 px-6" id="contact">
-      <div
-        class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8"
+      <!-- ============ FLAVOUR SHEET ============ -->
+      <section id="flavors" class="pt-16 sm:pt-24">
+        <div class="max-w-[1180px] mx-auto px-5 sm:px-8 pb-10 sm:pb-14">
+          <div
+            class="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+          >
+            <h2
+              class="reveal font-heading font-bold text-[clamp(2.1rem,5vw,3.6rem)] leading-[0.98]"
+            >
+              Four flavors.<br /><span class="text-[#0075FF]">One Mooki.</span>
+            </h2>
+            <p
+              class="reveal max-w-[38ch] text-[#4a4640] text-base leading-relaxed md:text-right"
+            >
+              Every carton starts with fresh milk, sterilized and sealed airtight. Pick the flavor that matches the pace of your day.
+            </p>
+          </div>
+        </div>
+
+        <div class="flavor-sheet">
+          <article
+            class="flavor reveal"
+            style="--bg: var(--choco); --fg: #ffffff"
+          >
+            <span class="flavor__idx" aria-hidden="true">01</span>
+            <header class="relative">
+              <h3 class="flavor__name">Choco Blast</h3>
+              <p class="flavor__desc">Chocolate Flavored Milk</p>
+            </header>
+            <img
+              class="flavor__art"
+              src="assets/products/choco-blast.png"
+              alt="Mooki Choco Blast carton"
+              loading="lazy"
+            />
+            <div class="flavor__foot relative">
+              <span class="flavor__chips">Chocolate · Fresh milk</span>
+              <button
+                type="button"
+                class="btn-flavor"
+                data-order-variant="choco-blast"
+              >
+                Order this flavor
+              </button>
+            </div>
+          </article>
+
+          <article
+            class="flavor reveal"
+            style="--bg: var(--vanilla); --fg: var(--ink)"
+          >
+            <span class="flavor__idx" aria-hidden="true">02</span>
+            <header class="relative">
+              <h3 class="flavor__name">Creamy Vanilla</h3>
+              <p class="flavor__desc">Vanilla Flavored Milk</p>
+            </header>
+            <img
+              class="flavor__art"
+              src="assets/products/creamy-vanilla.png"
+              alt="Mooki Creamy Vanilla carton"
+              loading="lazy"
+            />
+            <div class="flavor__foot relative">
+              <span class="flavor__chips">Vanilla · Fresh milk</span>
+              <button
+                type="button"
+                class="btn-flavor"
+                data-order-variant="creamy-vanilla"
+              >
+                Order this flavor
+              </button>
+            </div>
+          </article>
+
+          <article
+            class="flavor reveal"
+            style="--bg: var(--berry); --fg: var(--ink)"
+          >
+            <span class="flavor__idx" aria-hidden="true">03</span>
+            <header class="relative">
+              <h3 class="flavor__name">Strawberry Pop</h3>
+              <p class="flavor__desc">Fruity Sweetness</p>
+            </header>
+            <img
+              class="flavor__art"
+              src="assets/products/strawberry-pop.png"
+              alt="Mooki Strawberry Pop carton"
+              loading="lazy"
+            />
+            <div class="flavor__foot relative">
+              <span class="flavor__chips">Strawberry · Fresh milk</span>
+              <button
+                type="button"
+                class="btn-flavor"
+                data-order-variant="strawberry-pop"
+              >
+                Order this flavor
+              </button>
+            </div>
+          </article>
+
+          <article
+            class="flavor reveal"
+            style="--bg: var(--banana); --fg: var(--ink)"
+          >
+            <span class="flavor__idx" aria-hidden="true">04</span>
+            <header class="relative">
+              <h3 class="flavor__name">Banana Bounce</h3>
+              <p class="flavor__desc">Banana Flavored Milk</p>
+            </header>
+            <img
+              class="flavor__art"
+              src="assets/products/banana-bounce.png"
+              alt="Mooki Banana Bounce carton"
+              loading="lazy"
+            />
+            <div class="flavor__foot relative">
+              <span class="flavor__chips">Banana · Fresh milk</span>
+              <button
+                type="button"
+                class="btn-flavor"
+                data-order-variant="banana-bounce"
+              >
+                Order this flavor
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ WHY MOOKI ============ -->
+      <section class="py-16 sm:py-24">
+        <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+          <div
+            class="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start"
+          >
+            <div class="reveal lg:sticky lg:top-28">
+              <h2
+                class="font-heading font-bold text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.02]"
+              >
+                Why<br /><span class="text-[#0075FF]">Mooki?</span>
+              </h2>
+              <p class="mt-4 max-w-[34ch] text-[#4a4640] leading-relaxed">
+                Three things we keep in every carton, from the farm to your fridge.
+              </p>
+              <div class="seal mt-8" aria-hidden="true">100%<br />REAL</div>
+            </div>
+
+            <ol class="reasons reveal" style="transition-delay: 100ms">
+              <li>
+                <span class="num" aria-hidden="true">01</span>
+                <h3>Fresh milk first</h3>
+                <p>
+                  Mooki is made from fresh cow's milk, not reconstituted powder. The chocolate and fruit flavors go in without covering up the milk.
+                </p>
+              </li>
+              <li>
+                <span class="num" aria-hidden="true">02</span>
+                <h3>UHT sterilization</h3>
+                <p>
+                  The milk is heated to a high temperature for a few seconds, then sealed airtight. That is what keeps Mooki shelf stable without added preservatives.
+                </p>
+              </li>
+              <li>
+                <span class="num" aria-hidden="true">03</span>
+                <h3>Four flavors, one character</h3>
+                <p>
+                  Choco Blast, Creamy Vanilla, Strawberry Pop and Banana Bounce. All four taste best cold, straight from the carton.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SIDEKICK ============ -->
+      <section class="pb-16 sm:pb-24">
+        <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+          <div
+            class="reveal relative overflow-hidden rounded-[32px] border-2 border-[#101010] bg-[#0a6fc4] shadow-[8px_8px_0_#101010]"
+          >
+            <div class="grid md:grid-cols-[0.85fr_1.15fr] items-center">
+              <div class="relative flex items-end justify-center pt-8 md:py-8">
+                <span
+                  class="absolute inset-x-8 bottom-6 h-16 rounded-[50%] bg-[#054a86]/50 blur-md"
+                  aria-hidden="true"
+                ></span>
+                <img
+                  src="assets/mooki-about.png"
+                  alt="Mooki the cow mascot in a blue hoodie, holding a Choco Blast carton"
+                  class="relative w-[220px] sm:w-[280px] h-auto object-contain drop-shadow-[0_16px_20px_rgba(0,0,0,0.28)]"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="px-6 pb-9 pt-2 md:p-10 lg:p-12 text-white">
+                <p
+                  class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#e6f3ff] mb-3"
+                >
+                  Your Daily Sidekick
+                </p>
+                <h2
+                  class="font-heading font-bold text-[clamp(1.9rem,4vw,2.9rem)] leading-[1.02]"
+                >
+                  Hey, I'm Mooki!
+                </h2>
+                <p class="mt-4 max-w-[52ch] text-white leading-relaxed">
+                  Your daily sidekick in the blue hoodie. Whenever you need a lift, a better mood or a cold carton of milk, Mooki comes along.
+                </p>
+                <a
+                  href="about.html"
+                  class="mt-7 inline-flex items-center gap-2 rounded-full border-2 border-[#101010] bg-white px-6 py-3 font-extrabold text-[#101010] shadow-[3px_3px_0_#101010] transition hover:bg-[#FFF3D0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                >
+                  Meet Mooki
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA BANNER ============ -->
+      <section
+        class="relative isolate w-full min-h-[380px] md:min-h-[460px] bg-cover bg-center overflow-hidden"
+        style="background-image: url(&quot;assets/cta-bg.png&quot;)"
       >
-        <!-- Brand Logos -->
+        <div
+          class="absolute inset-0 bg-gradient-to-l from-[#04121f]/85 via-[#04121f]/50 to-transparent"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="relative max-w-[1180px] mx-auto px-5 sm:px-8 py-16 md:py-24 flex flex-col justify-center items-end text-right min-h-[380px] md:min-h-[460px]"
+        >
+          <div class="max-w-[30ch] reveal">
+            <h2
+              class="font-heading font-bold text-white text-[clamp(2rem,5vw,3.6rem)] leading-[0.98] sticker"
+            >
+              Your fridge has room for Mooki.
+            </h2>
+            <p
+              class="mt-5 text-white text-base sm:text-lg leading-relaxed max-w-[42ch]"
+            >
+              Order on WhatsApp or from any of our official stores. One click, four flavors.
+            </p>
+            <div class="mt-8 flex flex-col items-end gap-3">
+              <button
+                type="button"
+                data-order-cta
+                class="btn-primary w-full max-w-[260px]"
+              >
+                Order Now
+              </button>
+
+              <a
+                href="products.html"
+                class="inline-flex w-full max-w-[260px] items-center justify-center rounded-full border-2 border-white px-7 py-3.5 font-extrabold text-white transition hover:bg-white hover:text-[#101010]"
+              >
+                Compare the flavors
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer
+      class="bg-[#FBF8EE] border-t-2 border-[#101010] pt-12 pb-8 px-5 sm:px-8"
+    >
+      <div
+        class="max-w-[1180px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10"
+      >
         <div class="flex items-center gap-5">
           <img
             src="assets/logo/mooki-logo.png"
             alt="Mooki"
             class="h-12 w-auto object-contain"
           />
-          <div class="h-8 w-px bg-slate-300"></div>
+          <div class="h-8 w-px bg-[#101010]/20"></div>
           <img
             src="assets/logo/polije.png"
             alt="Politeknik Negeri Jember"
@@ -371,71 +1060,151 @@
           />
         </div>
 
-        <!-- Links Container (Information & Social) -->
         <div class="flex flex-row items-start gap-12 sm:gap-16 text-left">
-          <!-- Information Column -->
           <div>
-            <h5 class="font-bold text-slate-900 text-base mb-3">Information</h5>
-            <ul class="space-y-2 text-sm text-slate-700">
+            <h5 class="font-heading font-bold text-[#101010] text-base mb-3">
+              Information
+            </h5>
+            <ul class="space-y-2 text-sm text-[#4a4640]">
               <li>
-                <a href="about.html" class="hover:text-[#1FA2FF] transition">About Mooki</a>
+                <a
+                  href="about.html"
+                  class="inline-block py-1 hover:text-[#0066E0] transition"
+                  >About Mooki</a
+                >
               </li>
               <li>
-                <a href="products.html" class="hover:text-[#1FA2FF] transition">Products</a>
+                <a
+                  href="products.html"
+                  class="inline-block py-1 hover:text-[#0066E0] transition"
+                  >Products</a
+                >
               </li>
               <li>
-                <a href="contact.html" class="hover:text-[#1FA2FF] transition">Contact</a>
+                <a
+                  href="contact.html"
+                  class="inline-block py-1 hover:text-[#0066E0] transition"
+                  >Contact</a
+                >
               </li>
             </ul>
           </div>
 
-          <!-- Social Column -->
           <div>
-            <h5 class="font-bold text-slate-900 text-base mb-3">Social</h5>
-            <ul class="space-y-2.5 text-sm text-slate-700">
+            <h5 class="font-heading font-bold text-[#101010] text-base mb-3">
+              Social
+            </h5>
+            <ul class="space-y-2.5 text-sm text-[#4a4640]">
               <li>
                 <a
                   href="https://instagram.com/mooki__indonesia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2 hover:text-[#1FA2FF] transition"
+                  class="inline-flex items-center gap-2 py-1 hover:text-[#0066E0] transition"
                 >
-                  <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
+                  <svg
+                    class="w-4 h-4 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
                     <defs>
-                      <linearGradient id="ig-grad-index" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#fdf497"/>
-                        <stop offset="5%" stop-color="#fdf497"/>
-                        <stop offset="45%" stop-color="#fd5949"/>
-                        <stop offset="60%" stop-color="#d6249f"/>
-                        <stop offset="90%" stop-color="#285AEB"/>
+                      <linearGradient
+                        id="ig-grad-index"
+                        x1="0%"
+                        y1="100%"
+                        x2="100%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stop-color="#fdf497" />
+                        <stop offset="5%" stop-color="#fdf497" />
+                        <stop offset="45%" stop-color="#fd5949" />
+                        <stop offset="60%" stop-color="#d6249f" />
+                        <stop offset="90%" stop-color="#285AEB" />
                       </linearGradient>
                     </defs>
-                    <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-grad-index)"/>
-                    <path stroke="#ffffff" stroke-width="1.8" d="M12 16a4 4 0 100-8 4 4 0 000 8z" fill="none"/>
-                    <circle cx="17.5" cy="6.5" r="1.2" fill="#ffffff"/>
+                    <rect
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="20"
+                      rx="5.5"
+                      fill="url(#ig-grad-index)"
+                    />
+                    <path
+                      stroke="#ffffff"
+                      stroke-width="1.8"
+                      d="M12 16a4 4 0 100-8 4 4 0 000 8z"
+                      fill="none"
+                    />
+                    <circle cx="17.5" cy="6.5" r="1.2" fill="#ffffff" />
                   </svg>
                   <span>@mooki__indonesia</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6285143596912"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2 hover:text-[#1FA2FF] transition"
+                  class="inline-flex items-center gap-2 py-1 hover:text-[#0066E0] transition"
                 >
-                  <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" fill="#25D366"/>
-                    <path fill="#ffffff" d="M17.47 14.38c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+                  <svg
+                    class="w-4 h-4 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" fill="#25D366" />
+                    <path
+                      fill="#ffffff"
+                      d="M17.47 14.38c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.25-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"
+                    />
                   </svg>
-                  <span>+62 812-3456-7890</span>
+                  <span>+62 851-4359-6912</span>
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
+
+      <div
+        class="max-w-[1180px] mx-auto mt-10 pt-5 border-t border-[#101010]/10 flex flex-col sm:flex-row justify-between gap-2 text-xs text-[#6f6a60]"
+      >
+        <span>© 2026 Mooki, a product of Politeknik Negeri Jember.</span>
+        <span>UHT milk, four flavors.</span>
+      </div>
     </footer>
+
     <script src="order-modal.js"></script>
+    <script>
+      (function () {
+        var reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        var items = document.querySelectorAll(".reveal");
+        if (reduce || !("IntersectionObserver" in window)) {
+          items.forEach(function (el) {
+            el.classList.add("is-in");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-in");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -12% 0px", threshold: 0.08 },
+        );
+        items.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>

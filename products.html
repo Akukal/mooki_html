@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mooki - Products</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Fredoka (Headings) & Plus Jakarta Sans (Body Text) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Hirarki Font: Headings memakai Fredoka, Body memakai Plus Jakarta Sans */
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+
+    /* Transition Smart Animate Ease Out Back 300ms */
+    .transition-back {
+      transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Transition Smooth Height untuk Accordion FAQ */
+    .accordion-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    details[open] .accordion-content {
+      grid-template-rows: 1fr;
+    }
+    .accordion-inner {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- HERO SECTION WITH NAVBAR -->
+  <div class="relative w-full h-[450px] md:h-[550px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=1600&auto=format&fit=crop');">
+    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-[1px]"></div>
+
+    <!-- Header / Navbar -->
+    <header class="relative z-10 max-w-7xl mx-auto px-6 py-6 flex justify-between items-center text-white">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 bg-[#1FA2FF] rounded-full flex items-center justify-center font-bold text-xl border-2 border-white shadow-md">
+          🐮
+        </div>
+        <span class="font-heading text-2xl font-bold tracking-wider">Mooki</span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
+        <a href="index.html" class="hover:text-sky-200 transition">Home</a>
+        <a href="about.html" class="hover:text-sky-200 transition">About Mooki</a>
+        <a href="products.html" class="text-white underline decoration-sky-400 decoration-2 underline-offset-8">Products</a>
+        <a href="#contact" class="hover:text-sky-200 transition">Contact</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- SECTION: MOOORE FLAVORS, MOOORE FUN! -->
+  <section class="w-full py-16 text-center">
+
+    <!-- Judul Section -->
+    <div class="max-w-4xl mx-auto px-6 mb-12">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold text-[#1FA2FF] leading-tight tracking-wide">
+        Mooore Flavors,<br/>Mooore Fun!
+      </h1>
+    </div>
+
+    <!-- Container Full Width Accordion Produk -->
+    <div class="w-full flex flex-col md:flex-row min-h-[520px] md:h-[600px] items-stretch overflow-hidden">
+      
+      <!-- 01. CHOCO BLAST -->
+      <div data-variant="choco-blast" class="group relative flex-1 hover:flex-[1.6] bg-slate-50 hover:bg-[#7A4A32] transition-back px-6 py-8 md:px-10 md:py-10 text-left flex flex-col justify-end items-start cursor-pointer overflow-hidden border-r border-slate-200/60 last:border-r-0">
+        
+        <!-- Gambar Produk -->
+        <div class="absolute inset-0 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-back duration-300 transform scale-75 group-hover:scale-100 -translate-y-8 pointer-events-none">
+          <img src="assets/products/choco-blast.png" 
+               alt="Choco Blast" 
+               class="h-64 md:h-80 object-contain drop-shadow-2xl" />
+        </div>
+
+        <!-- Info Teks -->
+        <div class="z-10 w-full transition-back duration-300 transform translate-y-[-160px] group-hover:translate-y-0 group-hover:scale-95 origin-bottom-left">
+          <span class="font-heading text-2xl md:text-3xl font-normal text-slate-400 group-hover:text-amber-200/90 transition-colors block">01</span>
+          <h3 class="font-heading text-2xl md:text-4xl font-bold text-slate-900 group-hover:text-white leading-tight transition-colors mt-1">
+            Choco<br/>Blast
+          </h3>
+          <p class="text-sm md:text-base font-medium text-slate-500 group-hover:text-amber-100/90 transition-colors pt-1">Chocolate Flavour</p>
+        </div>
+
+      </div>
+
+      <!-- 02. CREAMY VANILLA -->
+      <div data-variant="creamy-vanilla" class="group relative flex-1 hover:flex-[1.6] bg-slate-50 hover:bg-[#3B729E] transition-back px-6 py-8 md:px-10 md:py-10 text-left flex flex-col justify-end items-start cursor-pointer overflow-hidden border-r border-slate-200/60 last:border-r-0">
+        
+        <!-- Gambar Produk -->
+        <div class="absolute inset-0 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-back duration-300 transform scale-75 group-hover:scale-100 -translate-y-8 pointer-events-none">
+          <img src="assets/products/creamy-vanilla.png" 
+               alt="Creamy Vanilla" 
+               class="h-64 md:h-80 object-contain drop-shadow-2xl" />
+        </div>
+
+        <!-- Info Teks -->
+        <div class="z-10 w-full transition-back duration-300 transform translate-y-[-160px] group-hover:translate-y-0 group-hover:scale-95 origin-bottom-left">
+          <span class="font-heading text-2xl md:text-3xl font-normal text-slate-400 group-hover:text-sky-200/90 transition-colors block">02</span>
+          <h3 class="font-heading text-2xl md:text-4xl font-bold text-slate-900 group-hover:text-white leading-tight transition-colors mt-1">
+            Creamy<br/>Vanilla
+          </h3>
+          <p class="text-sm md:text-base font-medium text-slate-500 group-hover:text-sky-100/90 transition-colors pt-1">Vanilla Flavour</p>
+        </div>
+
+      </div>
+
+      <!-- 03. STRAWBERRY POP -->
+      <div data-variant="strawberry-pop" class="group relative flex-1 hover:flex-[1.6] bg-slate-50 hover:bg-[#B05267] transition-back px-6 py-8 md:px-10 md:py-10 text-left flex flex-col justify-end items-start cursor-pointer overflow-hidden border-r border-slate-200/60 last:border-r-0">
+        
+        <!-- Gambar Produk -->
+        <div class="absolute inset-0 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-back duration-300 transform scale-75 group-hover:scale-100 -translate-y-8 pointer-events-none">
+          <img src="assets/products/strawberry-pop.png" 
+               alt="Strawberry Pop" 
+               class="h-64 md:h-80 object-contain drop-shadow-2xl" />
+        </div>
+
+        <!-- Info Teks -->
+        <div class="z-10 w-full transition-back duration-300 transform translate-y-[-160px] group-hover:translate-y-0 group-hover:scale-95 origin-bottom-left">
+          <span class="font-heading text-2xl md:text-3xl font-normal text-slate-400 group-hover:text-rose-200/90 transition-colors block">03</span>
+          <h3 class="font-heading text-2xl md:text-4xl font-bold text-slate-900 group-hover:text-white leading-tight transition-colors mt-1">
+            Strawberry<br/>Pop
+          </h3>
+          <p class="text-sm md:text-base font-medium text-slate-500 group-hover:text-rose-100/90 transition-colors pt-1">Strawberry Flavour</p>
+        </div>
+
+      </div>
+
+      <!-- 04. BANANA BOUNCE -->
+      <div data-variant="banana-bounce" class="group relative flex-1 hover:flex-[1.6] bg-slate-50 hover:bg-[#B38A1B] transition-back px-6 py-8 md:px-10 md:py-10 text-left flex flex-col justify-end items-start cursor-pointer overflow-hidden">
+        
+        <!-- Gambar Produk -->
+        <div class="absolute inset-0 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-back duration-300 transform scale-75 group-hover:scale-100 -translate-y-8 pointer-events-none">
+          <img src="assets/products/banana-bounce.png" 
+               alt="Banana Bounce" 
+               class="h-64 md:h-80 object-contain drop-shadow-2xl" />
+        </div>
+
+        <!-- Info Teks -->
+        <div class="z-10 w-full transition-back duration-300 transform translate-y-[-160px] group-hover:translate-y-0 group-hover:scale-95 origin-bottom-left">
+          <span class="font-heading text-2xl md:text-3xl font-normal text-slate-400 group-hover:text-yellow-200/90 transition-colors block">04</span>
+          <h3 class="font-heading text-2xl md:text-4xl font-bold text-slate-900 group-hover:text-white leading-tight transition-colors mt-1">
+            Banana<br/>Bounce
+          </h3>
+          <p class="text-sm md:text-base font-medium text-slate-500 group-hover:text-yellow-100/90 transition-colors pt-1">Banana Flavour</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION: MOORE QUESTIONS? (FAQ) -->
+  <section class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-12 justify-between items-start">
+      
+      <!-- FAQ Accordion Container (Sebelah Kiri) -->
+      <div class="lg:w-2/3 w-full space-y-4">
+        
+        <!-- Q1 -->
+        <details class="group border border-slate-200 hover:border-sky-400 rounded-2xl p-5 bg-white transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+          <summary class="flex justify-between items-center font-bold text-slate-900 text-base md:text-lg list-none select-none tracking-wide">
+            <span>What flavors are available?</span>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-sky-50 flex items-center justify-center transition-colors">
+              <svg class="w-5 h-5 text-slate-600 group-open:text-[#1FA2FF] transition-transform duration-300 transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </summary>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="text-sm md:text-base text-slate-600 leading-relaxed pt-4 border-t border-slate-100 mt-3 opacity-0 group-open:opacity-100 transition-opacity duration-300 delay-75">
+                Mooki comes in four delicious flavors: Choco Blast, Strawberry Pop, Creamy Vanilla, and Banana Bounce. Each one brings its own unique taste to make your day a little sweeter!
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- Q2 -->
+        <details class="group border border-slate-200 hover:border-sky-400 rounded-2xl p-5 bg-white transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+          <summary class="flex justify-between items-center font-bold text-slate-900 text-base md:text-lg list-none select-none tracking-wide">
+            <span>What makes Mooki special?</span>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-sky-50 flex items-center justify-center transition-colors">
+              <svg class="w-5 h-5 text-slate-600 group-open:text-[#1FA2FF] transition-transform duration-300 transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </summary>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="text-sm md:text-base text-slate-600 leading-relaxed pt-4 border-t border-slate-100 mt-3 opacity-0 group-open:opacity-100 transition-opacity duration-300 delay-75">
+                Mooki brings together delicious milk flavors and convenient UHT packaging, making it an easy and enjoyable companion for your everyday activities.
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- Q3 -->
+        <details class="group border border-slate-200 hover:border-sky-400 rounded-2xl p-5 bg-white transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+          <summary class="flex justify-between items-center font-bold text-slate-900 text-base md:text-lg list-none select-none tracking-wide">
+            <span>What is UHT milk?</span>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-sky-50 flex items-center justify-center transition-colors">
+              <svg class="w-5 h-5 text-slate-600 group-open:text-[#1FA2FF] transition-transform duration-300 transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </summary>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="text-sm md:text-base text-slate-600 leading-relaxed pt-4 border-t border-slate-100 mt-3 opacity-0 group-open:opacity-100 transition-opacity duration-300 delay-75">
+                UHT stands for Ultra-High Temperature. It's a milk processing method that uses high temperatures for a short time to help eliminate harmful microorganisms and extend shelf life.
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- Q4 -->
+        <details class="group border border-slate-200 hover:border-sky-400 rounded-2xl p-5 bg-white transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+          <summary class="flex justify-between items-center font-bold text-slate-900 text-base md:text-lg list-none select-none tracking-wide">
+            <span>Does Mooki need to be refrigerated?</span>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-sky-50 flex items-center justify-center transition-colors">
+              <svg class="w-5 h-5 text-slate-600 group-open:text-[#1FA2FF] transition-transform duration-300 transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </summary>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="text-sm md:text-base text-slate-600 leading-relaxed pt-4 border-t border-slate-100 mt-3 opacity-0 group-open:opacity-100 transition-opacity duration-300 delay-75">
+                Nope! Unopened Mooki can be stored at room temperature in a cool, dry place. Once opened, keep it refrigerated and consume according to the packaging instructions.
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- Q5 -->
+        <details class="group border border-slate-200 hover:border-sky-400 rounded-2xl p-5 bg-white transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+          <summary class="flex justify-between items-center font-bold text-slate-900 text-base md:text-lg list-none select-none tracking-wide">
+            <span>Is Mooki suitable for children?</span>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-sky-50 flex items-center justify-center transition-colors">
+              <svg class="w-5 h-5 text-slate-600 group-open:text-[#1FA2FF] transition-transform duration-300 transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </summary>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="text-sm md:text-base text-slate-600 leading-relaxed pt-4 border-t border-slate-100 mt-3 opacity-0 group-open:opacity-100 transition-opacity duration-300 delay-75">
+                Mooki is designed to be a fun milk companion. However, always check the nutritional information and ingredients to make sure it suits your child's dietary needs.
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- Q6 -->
+        <details class="group border border-slate-200 hover:border-sky-400 rounded-2xl p-5 bg-white transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+          <summary class="flex justify-between items-center font-bold text-slate-900 text-base md:text-lg list-none select-none tracking-wide">
+            <span>How long does Mooki last?</span>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-sky-50 flex items-center justify-center transition-colors">
+              <svg class="w-5 h-5 text-slate-600 group-open:text-[#1FA2FF] transition-transform duration-300 transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </summary>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="text-sm md:text-base text-slate-600 leading-relaxed pt-4 border-t border-slate-100 mt-3 opacity-0 group-open:opacity-100 transition-opacity duration-300 delay-75">
+                Unopened Mooki can last up to 10 months thanks to our Flash UHT Seal process. Always check the expiration date printed on the pack!
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- Q7 -->
+        <details class="group border border-slate-200 hover:border-sky-400 rounded-2xl p-5 bg-white transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+          <summary class="flex justify-between items-center font-bold text-slate-900 text-base md:text-lg list-none select-none tracking-wide">
+            <span>Where can I buy Mooki?</span>
+            <div class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-sky-50 flex items-center justify-center transition-colors">
+              <svg class="w-5 h-5 text-slate-600 group-open:text-[#1FA2FF] transition-transform duration-300 transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </summary>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="text-sm md:text-base text-slate-600 leading-relaxed pt-4 border-t border-slate-100 mt-3 opacity-0 group-open:opacity-100 transition-opacity duration-300 delay-75">
+                Looking for your next Mooki moment? Check out our available purchasing channels and stay tuned to our social media for the latest updates!
+              </p>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- Title Right & Sticky (Sebelah Kanan & Tetap di Tempat) -->
+      <div class="lg:w-1/3 lg:sticky lg:top-12">
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-[#1FA2FF] leading-tight mb-4">
+          Moore<br/>Questions?
+        </h2>
+        <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+          Everything you need to know about your favorite milky sidekick!
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BANNER CTA: MOOVE YOUR DAY WITH MOOKI -->
+  <section class="relative w-full py-20 bg-gradient-to-r from-sky-400 via-[#1FA2FF] to-sky-400 overflow-hidden text-center text-white">
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <h2 class="font-heading text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-tight drop-shadow-md">
+        Moove Your Day<br/>With Mooki!
+      </h2>
+      <a href="#buy" class="inline-block bg-white hover:bg-sky-50 text-[#1FA2FF] font-bold text-xl px-10 py-4 rounded-full shadow-lg border-2 border-white transition transform hover:scale-105">
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Splash Graphic Deco -->
+    <div class="absolute bottom-0 left-0 right-0 h-12 bg-white rounded-t-[50%] scale-x-125"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#FFFDF5] py-12 px-6 border-t border-amber-100/60" id="contact">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+      
+      <!-- Brand Logos -->
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-[#1FA2FF] rounded-full flex items-center justify-center font-bold text-2xl text-white shadow-sm">
+          🐮
+        </div>
+        <div class="w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center font-bold text-xl text-white shadow-sm">
+          🌿
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="text-center md:text-left">
+        <h5 class="font-heading font-bold text-slate-900 text-lg mb-3">Information</h5>
+        <ul class="space-y-2 text-sm text-slate-600 font-medium">
+          <li><a href="about.html" class="hover:text-[#1FA2FF] transition">About Mooki</a></li>
+          <li><a href="products.html" class="hover:text-[#1FA2FF] transition">Products</a></li>
+          <li><a href="#contact" class="hover:text-[#1FA2FF] transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Social Media & Contact -->
+      <div class="text-center md:text-left">
+        <h5 class="font-heading font-bold text-slate-900 text-lg mb-3">Social</h5>
+        <ul class="space-y-2 text-sm text-slate-600 font-medium">
+          <li class="flex items-center justify-center md:justify-start gap-2.5">
+            <span>📷</span>
+            <a href="#" class="hover:text-[#1FA2FF] transition">@mooki_indonesia</a>
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2.5">
+            <span>💬</span>
+            <a href="#" class="hover:text-[#1FA2FF] transition">+62 812-3456-7890</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="order-modal.js"></script>
+</body>
+</html>

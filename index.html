@@ -59,45 +59,96 @@
     </div>
 
     <!-- SECTION: WHY MOOKI -->
-    <section class="py-20 px-6 max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-black text-[#1FA2FF] mb-2">
-        Why Mooki?
-      </h2>
-      <p class="text-gray-600 font-medium mb-16">Fuel Up with Goodness</p>
+    <section class="mx-auto max-w-5xl px-6 pb-8 pt-3 text-center md:pb-12 md:pt-8">
+      <div class="mx-auto w-[88%] border-2 border-dotted border-sky-300 px-2 py-0.5">
+        <h2 class="text-xl font-black leading-6 text-[#1FA2FF] md:text-4xl md:leading-tight">
+          Why Mooki?
+        </h2>
+        <p class="text-[9px] font-medium leading-3 text-gray-700 md:text-sm md:leading-5">
+          Fuel Up with Goodness
+        </p>
+      </div>
 
       <div
-        class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 text-left"
+        class="mx-auto mt-1.5 flex min-h-[88px] w-[77%] min-w-[300px] max-w-[790px] items-center justify-between gap-2 border-2 border-dotted border-sky-300 px-2 py-1 text-left md:mt-3 md:min-h-[150px] md:px-6 md:py-3"
       >
-        <div class="max-w-md">
-          <h3 class="text-2xl font-bold text-[#1FA2FF] mb-3">
+        <div class="max-w-[65%]">
+          <h3 class="text-sm font-bold leading-tight text-[#1FA2FF] md:text-2xl">
             100% Fresh UHT Quality
           </h3>
-          <p class="text-gray-500 text-base leading-relaxed">
+          <p class="mt-1 text-[9px] leading-[1.15] text-gray-700 md:mt-2 md:text-base md:leading-relaxed">
             Locked-in freshness without artificial preservatives.
           </p>
         </div>
 
-        <!-- Icon Shield Badge -->
-        <div class="relative w-36 h-36 flex items-center justify-center">
-          <div
-            class="w-32 h-32 rounded-full border-4 border-dashed border-sky-300 p-2 flex flex-col items-center justify-center text-sky-500"
+        <svg
+          class="h-[78px] w-[78px] shrink-0 md:h-32 md:w-32"
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="100% fresh milk quality badge"
+        >
+          <circle
+            cx="50"
+            cy="50"
+            r="46"
+            fill="#E4F6FC"
+            stroke="#7DD3FC"
+            stroke-width="1.5"
+            stroke-dasharray="2 3"
+          />
+          <path
+            d="M17 28L19 32L23 34L19 36L17 40L15 36L11 34L15 32L17 28ZM83 19L85 23L89 25L85 27L83 31L81 27L77 25L81 23L83 19ZM18 64L20 68L24 70L20 72L18 76L16 72L12 70L16 68L18 64ZM82 65L84 69L88 71L84 73L82 77L80 73L76 71L80 69L82 65Z"
+            fill="#FBBF24"
+          />
+          <path
+            d="M34 22H54L60 30V72H30V29L34 22Z"
+            fill="#FFFDF5"
+            stroke="#38BDF8"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+          <path d="M34 22H54V31H30L34 22Z" fill="#BAE6FD" />
+          <path
+            d="M30 43H60V72H30V43Z"
+            fill="#BCE3ED"
+            stroke="#38BDF8"
+            stroke-width="1.5"
+          />
+          <path
+            d="M38 52C40 49 43 49 45 52M48 52C50 49 53 49 55 52"
+            stroke="#0369A1"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+          <path d="M40 60C43 63 48 63 51 60" stroke="#0369A1" stroke-width="1.8" stroke-linecap="round" />
+          <path
+            d="M67 40L83 46V56C83 68 76 76 67 80C58 76 51 68 51 56V46L67 40Z"
+            fill="#FDE68A"
+            stroke="#F59E0B"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M60 59L65 64L74 53"
+            stroke="#B45309"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <text
+            x="67"
+            y="88"
+            fill="#0369A1"
+            font-family="Arial, sans-serif"
+            font-size="8"
+            font-weight="700"
+            text-anchor="middle"
           >
-            <svg
-              class="w-8 h-8 mb-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.6 15.1a2 2 0 00-1.022.547l-1.096 1.096a2 2 0 00-.586 1.414V20a2 2 0 002 2h16a2 2 0 002-2v-1.843a2 2 0 00-.586-1.414l-1.096-1.096z"
-              ></path>
-            </svg>
-            <span class="font-extrabold text-sm">100%</span>
-          </div>
-        </div>
+            100%
+          </text>
+        </svg>
       </div>
     </section>
 
@@ -141,148 +192,146 @@
     </section>
 
     <!-- SECTION: TASTE THE FUN / PRODUCTS -->
-    <section id="products" class="py-20 px-6 max-w-6xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-black text-[#1FA2FF] mb-2">
+    <section id="products" class="mx-auto max-w-5xl px-6 py-6 text-center md:py-12">
+      <h2 class="mb-1 text-2xl font-black text-[#1FA2FF] md:text-4xl">
         Taste The Fun
       </h2>
-      <p class="text-gray-600 font-medium mb-6">Which one's your vibe?</p>
+      <p class="mb-3 text-[10px] font-medium text-gray-600 md:text-sm">
+        Which one's your vibe?
+      </p>
 
-      <div class="mb-12">
+      <div class="mb-3">
         <a
           href="#all-products"
-          class="inline-block bg-[#0075FF] hover:bg-blue-700 text-white font-bold px-8 py-2.5 rounded-full shadow-sm transition"
+          class="inline-block rounded-full border border-black bg-[#0075FF] px-3 py-1 text-[10px] font-bold text-white shadow-sm transition hover:bg-blue-700 md:px-5 md:py-1.5 md:text-sm"
         >
           All Products
         </a>
       </div>
 
       <!-- Grid Produk 2x2 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="mx-auto grid max-w-[26.5rem] grid-cols-1 gap-3 min-[420px]:grid-cols-2 md:max-w-4xl md:gap-5">
         <!-- Choco Blast -->
-        <div
+        <button
+          type="button"
           data-variant="choco-blast"
-          class="product-card bg-[#B87042] rounded-2xl p-8 text-white flex flex-col items-center justify-between min-h-[380px] shadow-sm relative overflow-hidden group cursor-pointer transition transform hover:-translate-y-1 hover:shadow-xl"
+          aria-label="Pesan Choco Blast"
+          class="product-card group relative flex aspect-square w-full flex-col items-center overflow-hidden bg-[#B87042] p-2 text-white transition hover:shadow-lg focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0075FF] md:p-4"
         >
-          <h3 class="text-3xl font-black tracking-wide mb-4">Choco Blast</h3>
+          <h3 class="relative z-10 text-base font-black tracking-wide md:text-2xl">
+            Choco Blast
+          </h3>
           <img
             src="assets/products/choco-blast.png"
             alt="Choco Blast"
-            class="w-36 h-36 my-auto transition transform group-hover:scale-110 duration-300 drop-shadow-lg"
+            class="min-h-0 w-full flex-1 object-contain pb-0 pt-1 transition duration-300 group-hover:scale-105"
           />
-          <div class="mt-4 flex flex-col items-center gap-3">
-            <span class="text-sm font-semibold opacity-90">Chocolate Flavored Milk</span>
-            <button type="button" class="bg-white/20 hover:bg-white text-white hover:text-[#B87042] font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full border border-white/40 transition-all shadow-sm">
-              Pesan Sekarang
-            </button>
-          </div>
-        </div>
+        </button>
 
         <!-- Creamy Vanilla -->
-        <div
+        <button
+          type="button"
           data-variant="creamy-vanilla"
-          class="product-card bg-[#BCE3ED] rounded-2xl p-8 text-gray-800 flex flex-col items-center justify-between min-h-[380px] shadow-sm relative overflow-hidden group cursor-pointer transition transform hover:-translate-y-1 hover:shadow-xl"
+          aria-label="Pesan Creamy Vanilla"
+          class="product-card group relative flex aspect-square w-full flex-col items-center overflow-hidden bg-[#BCE3ED] p-2 text-gray-800 transition hover:shadow-lg focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0075FF] md:p-4"
         >
-          <h3 class="text-3xl font-black tracking-wide mb-4">Creamy Vanilla</h3>
+          <h3 class="relative z-10 text-base font-black tracking-wide md:text-2xl">
+            Creamy Vanilla
+          </h3>
           <img
             src="assets/products/creamy-vanilla.png"
             alt="Creamy Vanilla"
-            class="w-36 h-36 my-auto transition transform group-hover:scale-110 duration-300 drop-shadow-lg"
+            class="min-h-0 w-full flex-1 object-contain pb-0 pt-1 transition duration-300 group-hover:scale-105"
           />
-          <div class="mt-4 flex flex-col items-center gap-3">
-            <span class="text-sm font-semibold opacity-90">Vanilla Flavored Milk</span>
-            <button type="button" class="bg-sky-500/20 hover:bg-[#0075FF] text-slate-800 hover:text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full border border-sky-400/40 transition-all shadow-sm">
-              Pesan Sekarang
-            </button>
-          </div>
-        </div>
+        </button>
 
         <!-- Strawberry Pop -->
-        <div
+        <button
+          type="button"
           data-variant="strawberry-pop"
-          class="product-card bg-[#F6C6D6] rounded-2xl p-8 text-gray-800 flex flex-col items-center justify-between min-h-[380px] shadow-sm relative overflow-hidden group cursor-pointer transition transform hover:-translate-y-1 hover:shadow-xl"
+          aria-label="Pesan Strawberry Pop"
+          class="product-card group relative flex aspect-square w-full flex-col items-center overflow-hidden bg-[#F6C6D6] p-2 text-gray-800 transition hover:shadow-lg focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0075FF] md:p-4"
         >
-          <h3 class="text-3xl font-black tracking-wide mb-4">Strawberry Pop</h3>
+          <h3 class="relative z-10 text-base font-black tracking-wide md:text-2xl">
+            Strawberry Pop
+          </h3>
           <img
             src="assets/products/strawberry-pop.png"
             alt="Strawberry Pop"
-            class="w-36 h-36 my-auto transition transform group-hover:scale-110 duration-300 drop-shadow-lg"
+            class="min-h-0 w-full flex-1 object-contain pb-0 pt-1 transition duration-300 group-hover:scale-105"
           />
-          <div class="mt-4 flex flex-col items-center gap-3">
-            <span class="text-sm font-semibold opacity-90">Fruity Sweetness</span>
-            <button type="button" class="bg-rose-500/20 hover:bg-rose-500 text-slate-800 hover:text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full border border-rose-400/40 transition-all shadow-sm">
-              Pesan Sekarang
-            </button>
-          </div>
-        </div>
+        </button>
 
         <!-- Banana Bounce -->
-        <div
+        <button
+          type="button"
           data-variant="banana-bounce"
-          class="product-card bg-[#F8E58C] rounded-2xl p-8 text-gray-800 flex flex-col items-center justify-between min-h-[380px] shadow-sm relative overflow-hidden group cursor-pointer transition transform hover:-translate-y-1 hover:shadow-xl"
+          aria-label="Pesan Banana Bounce"
+          class="product-card group relative flex aspect-square w-full flex-col items-center overflow-hidden bg-[#F8E58C] p-2 text-gray-800 transition hover:shadow-lg focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0075FF] md:p-4"
         >
-          <h3 class="text-3xl font-black tracking-wide mb-4">Banana Bounce</h3>
+          <h3 class="relative z-10 text-base font-black tracking-wide md:text-2xl">
+            Banana Bounce
+          </h3>
           <img
             src="assets/products/banana-bounce.png"
             alt="Banana Bounce"
-            class="w-36 h-36 my-auto transition transform group-hover:scale-110 duration-300 drop-shadow-lg"
+            class="min-h-0 w-full flex-1 object-contain pb-0 pt-1 transition duration-300 group-hover:scale-105"
           />
-          <div class="mt-4 flex flex-col items-center gap-3">
-            <span class="text-sm font-semibold opacity-90">Banana Flavored Milk</span>
-            <button type="button" class="bg-amber-500/20 hover:bg-amber-500 text-slate-800 hover:text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full border border-amber-400/40 transition-all shadow-sm">
-              Pesan Sekarang
-            </button>
-          </div>
-        </div>
+        </button>
       </div>
     </section>
 
     <!-- BANNER CTA: MOOVE YOUR DAY WITH MOOKI -->
     <section
-      class="relative w-full py-20 bg-gradient-to-r from-sky-400 via-blue-500 to-sky-400 overflow-hidden text-center text-white"
+      class="relative aspect-[1440/557] w-full overflow-hidden bg-cover bg-center"
+      style="background-image: url('assets/cta-bg.png')"
     >
-      <div class="max-w-4xl mx-auto px-6 relative z-10">
-        <h2
-          class="text-4xl md:text-6xl font-black tracking-tight mb-8 leading-tight drop-shadow-md"
-        >
-          Moove Your Day<br />With Mooki!
-        </h2>
-        <a
-          href="#buy"
-          class="inline-block bg-[#0075FF] hover:bg-blue-700 text-white font-extrabold text-xl px-10 py-4 rounded-full shadow-lg border-2 border-white transition transform hover:scale-105"
-        >
-          Buy Now
-        </a>
-      </div>
-
-      <!-- Splash Graphic Deco (CSS Shape) -->
       <div
-        class="absolute bottom-0 left-0 right-0 h-12 bg-white rounded-t-[50%] scale-x-125"
-      ></div>
+        class="relative z-10 mx-auto flex h-full max-w-7xl items-center justify-end px-5 sm:px-8"
+      >
+        <div class="w-[56%] text-center">
+          <h2
+            class="mb-2 text-[clamp(0.75rem,4.8vw,3rem)] font-black leading-[0.95] tracking-tight text-white sm:mb-4"
+            style="-webkit-text-stroke: 2px #111827; paint-order: stroke fill"
+          >
+            Moove Your Day<br /><span class="text-[#8CE0F5]">With Mooki!</span>
+          </h2>
+          <a
+            href="#buy"
+            class="inline-block rounded-full border-2 border-[#1F2937] bg-[#0075FF] px-4 py-1 text-[clamp(0.7rem,2.4vw,1.5rem)] font-extrabold text-white shadow-md transition hover:scale-105 hover:bg-blue-700 sm:px-9 sm:py-2"
+          >
+            Buy Now
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-[#FFFDF5] py-12 px-6">
+    <footer id="contact" class="bg-[#FFFDF5] px-5 py-8 md:py-10">
       <div
-        class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8"
+        class="mx-auto grid max-w-5xl grid-cols-2 items-center gap-x-6 gap-y-7 sm:grid-cols-[1.15fr_0.8fr_1fr] sm:gap-8"
       >
         <!-- Brand Logos -->
-        <div class="flex items-center gap-4">
+        <div class="col-span-2 flex items-center justify-center gap-5 sm:col-span-1 sm:justify-start">
           <img
-            src="assets/Mooki.png"
+            src="assets/Mooki-sidekick.png"
             alt="Mooki Logo"
-            class="w-10 h-10 rounded-full border-2 border-gray-300"
+            class="h-20 w-20 object-contain md:h-24 md:w-24"
           />
-          <div
-            class="w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center font-bold text-xl text-white"
-          >
-            🌿
-          </div>
+          <span class="h-16 border-l border-[#D8D0C2] md:h-20" aria-hidden="true"></span>
+          <img
+            src="assets/polije.png"
+            alt="Politeknik Negeri Jember"
+            class="h-16 w-14 object-contain md:h-20 md:w-16"
+          />
         </div>
 
         <!-- Navigation Links -->
-        <div class="text-center md:text-left">
-          <h5 class="font-bold text-gray-800 mb-3">Information</h5>
-          <ul class="space-y-1 text-sm text-gray-600">
+        <div class="text-left">
+          <h5 class="mb-2 text-lg font-bold leading-tight text-gray-800 md:text-xl">
+            Information
+          </h5>
+          <ul class="space-y-1.5 text-sm leading-snug text-gray-600 md:text-base">
             <li>
               <a href="about.html" class="hover:underline">About Mooki</a>
             </li>
@@ -294,16 +343,44 @@
         </div>
 
         <!-- Social Media & Contact -->
-        <div class="text-center md:text-left">
-          <h5 class="font-bold text-gray-800 mb-3">Social</h5>
-          <ul class="space-y-2 text-sm text-gray-600">
-            <li class="flex items-center justify-center md:justify-start gap-2">
-              <span>📷</span>
-              <a href="#" class="hover:underline">@mooki_indonesia</a>
+        <div class="text-left">
+          <h5 class="mb-2 text-lg font-bold leading-tight text-gray-800 md:text-xl">
+            Social
+          </h5>
+          <ul class="space-y-2 text-sm leading-snug text-gray-600 md:text-base">
+            <li class="flex min-w-0 items-center gap-2">
+              <svg
+                class="h-5 w-5 shrink-0 text-[#E1306C]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" />
+              </svg>
+              <a
+                href="https://www.instagram.com/mooki_indonesia/"
+                class="break-all hover:underline"
+                >@mooki_indonesia</a
+              >
             </li>
-            <li class="flex items-center justify-center md:justify-start gap-2">
-              <span>💬</span>
-              <a href="#" class="hover:underline">+62 812-3456-7890</a>
+            <li class="flex min-w-0 items-center gap-2">
+              <svg
+                class="h-5 w-5 shrink-0 text-[#25D366]"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12.04 2a9.9 9.9 0 0 0-8.47 15.03L2 22l5.1-1.53A9.95 9.95 0 1 0 12.04 2Zm0 18.1a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.03.91.93-2.95-.2-.31a8.13 8.13 0 1 1 6.73 3.66Zm4.46-6.09c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.39.51.58.18 1.1.15 1.51.09.46-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"
+                />
+              </svg>
+              <a href="https://wa.me/6281234567890" class="break-all hover:underline"
+                >+62 812-3456-7890</a
+              >
             </li>
           </ul>
         </div>

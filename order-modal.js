@@ -217,7 +217,7 @@
     // Product cards in index.html
     const productGrid = document.querySelector('#products .grid');
     if (productGrid) {
-      const cards = productGrid.querySelectorAll(':scope > div');
+      const cards = productGrid.querySelectorAll(':scope > .product-card');
       const keys = ['choco-blast', 'creamy-vanilla', 'strawberry-pop', 'banana-bounce'];
       cards.forEach((card, idx) => {
         card.classList.add('cursor-pointer');
